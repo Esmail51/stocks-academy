@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../assets/images/SS Capital Logo.avif";
+import Logo from "../assets/images/SS Capital Logo.png";
 import { useNavigate, matchPath, useLocation } from 'react-router-dom';
 
 
@@ -13,15 +13,15 @@ const Header = () => {
     const addToCart = () => {
         setCartCount(cartCount + 1);
     };
-    const propertyPaths = ['/terms','/assecibilty','/calendar','/intro_to_technical_analysis_and_understanding','/in_depth_technical_analysis_training'];
+    const propertyPaths = ['/terms','/assecibilty','/calendar','/intro_to_technical_analysis_and_understanding','/in_depth_technical_analysis_training','/an_introduction_to_options_trading',"/membership"];
   const isStaticPath = propertyPaths.includes(currentPath);
   const isDynamicPath = matchPath('/property/:id', currentPath) || matchPath('/agent/:id', currentPath);
   const isPropertyPage = isStaticPath || isDynamicPath;
     return (
-        <header className={`w-full flex justify-between items-center z-20 ${isPropertyPage ? 'relative bg-purple-500' : 'absolute'}` }>
+        <header className={`w-full px-3 flex justify-between items-center z-20 ${isPropertyPage ? 'relative bg-purple-500' : 'absolute'}` }>
             {/* Logo */}
-            <div className="header__logo">
-                <img src={Logo} alt="SS Capital Logo" className="h-16" />
+            <div className="header__logo ">
+                <img src={Logo} alt="SS Capital Logo" className="h-28" />
             </div>
 
             {/* Navigation */}

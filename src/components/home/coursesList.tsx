@@ -48,7 +48,7 @@ const CoursesList = () => {
                             image: img4,
                             heading: "Options 101: An Introduction to Options Trading",
                             content: "A comprehensive 5 hour class in Toronto covering introductory concepts of Options Trading and application of Options Trading to diverse aspects of technical analysis, charting tools, understanding of indicators, broader markets, risk management &  Options Trading Techniques.", 
-                            page:'coursethree'
+                            page:'an_introduction_to_options_trading'
 
                         },
                         {
@@ -57,7 +57,7 @@ const CoursesList = () => {
                             image: img3,
                             heading: "3-Month Academy Package Inclusive of Both 1+2 (MOST POPULAR)",
                             content: "A comprehensive 5-hour class in Toronto covering introductory and advanced concepts of the stock market and diverse aspects of technical analysis, charting tools, understanding of indicators, broader markets, risk management & swing trading techniques.",
-                            page:'coursefour'
+                            page:'membership'
 
                         },
                     ].map((packageItem) => (

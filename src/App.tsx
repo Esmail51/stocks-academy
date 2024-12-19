@@ -9,6 +9,8 @@ import TermsCondition from './pages/termAndConditions';
 import Assecibilty from './pages/assecibilty';
 import CourseOne from './pages/courses/courseOne';
 import CourseTwo from './pages/courses/courseTwo';
+import CourseThree from './pages/courses/courseThree';
+import CourseFour from './pages/courses/courseFour';
 
 
 function App() {
@@ -19,7 +21,10 @@ function App() {
       {path: "/terms", element: <TermsCondition />},
       {path: "/assecibilty", element: <Assecibilty />},
       {path: "/intro_to_technical_analysis_and_understanding", element: <CourseOne/>},
-      {path: "/in_depth_technical_analysis_training", element: <CourseTwo/>}
+      {path: "/in_depth_technical_analysis_training", element: <CourseTwo/>},
+      {path: "/an_introduction_to_options_trading", element: <CourseThree/>},
+      {path: "/membership", element: <CourseFour/>}
+
 
 
     ],

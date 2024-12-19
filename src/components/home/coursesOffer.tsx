@@ -27,52 +27,53 @@ export default function CoursesOffer() {
         }
     ]
     return (
-        <section className=' bg-purple-600 from-purple-600 to-blue-500 text-white py-0 px-4 md:px-16 lg:px-24 relative'>
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-500 opacity-75"></div>
+        
+<section className="bg-purple-600 from-purple-600 to-blue-500 text-white py-0 px-4 md:px-16 lg:px-10 relative">
+  <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-500 opacity-75"></div>
 
-            <div className='container mx-auto  flex  lg:flex-row  p-10   z-20 relative'>
-                <div className=' text-start w-1/3'>
-                    <h2 className='text-4xl text-start mt-0 font-bold'>Courses We Offer</h2>
-                    <h2 className='text-xl text-start font-semibold w-[400px] mt-5'>Technical Analysis and Understanding the Stock Market </h2>
-                    <p className='w-[400px] mt-5'>A comprehensive 7 hour seminar course in Toronto covering introductory concepts of the North American Equity stock market.</p>
-                    
-                <div className='flex flex-row items-start gap-3 mt-10' >
-                <a
-                        href="/courses"
-                        className="inline-block bg-purple-100 text-black font-semibold text-sm  px-6 py-3 rounded-lg shadow-lg hover:bg-purple-500 hover:text-white"
-                    >
-                        Course Packages
+  <div className="container mx-auto flex flex-col lg:flex-row p-5 z-20 relative">
+    {/* Left Column */}
+    <div className="lg:w-1/3 w-full text-start">
+      <h2 className="text-4xl font-bold">Courses We Offer</h2>
+      <h2 className="text-xl font-semibold mt-5">Technical Analysis and Understanding the Stock Market</h2>
+      <p className="mt-5">A comprehensive 7-hour seminar course in Toronto covering introductory concepts of the North American Equity stock market.</p>
 
-                    </a>
-                    <a
-                        href="/courses"
-                        className="inline-block bg-purple-100 text-black font-semibold text-sm  px-6 py-3 rounded-lg shadow-lg hover:bg-purple-500 hover:text-white"
-                    >
-                        Membership Packages
-                    </a>
-                </div>
+      <div className="flex items-start gap-3 mt-10">
+        <a
+          href="/courses"
+          className="inline-block bg-purple-100 text-black font-semibold text-sm px-6 py-3 rounded-lg shadow-lg hover:bg-purple-500 hover:text-white"
+        >
+          Course Packages
+        </a>
+        <a
+          href="/courses"
+          className="inline-block bg-purple-100 text-black font-semibold text-sm px-6 py-3 rounded-lg shadow-lg hover:bg-purple-500 hover:text-white"
+        >
+          Membership Packages
+        </a>
+      </div>
+    </div>
 
-                </div>
-                <div className='w-2/3 flex gap-3 '>
-                    {
-                        courses.map((course, index) => (
-                            <div key={index} className=' w-[300px] rounded-lg shadow-lg  bg-white text-black  hover:scale-105 transition'>
-                                <img className='object-cover w-full h-[200px] rounded-lg ' src={course.image} alt='' />
-                                <div className='p-4 pt-0'>
-                                    <h3 className='text-lg text-start pb-4 font-semibold'>{course.title}</h3>
-                                    <p className='text-sm text-start'>{course.description}</p>
-                                </div>
-                            </div>
-                        ))
-
-                    }
-
-                </div>
-            </div>
-
-
-
-
-        </section>
+    {/* Right Column */}
+    <div className="lg:w-2/3 w-full flex gap-5 mt-10 lg:mt-0">
+      {courses.map((course, index) => (
+        <div
+          key={index}
+          className="w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.33%-10px)] rounded-lg shadow-lg bg-white text-black hover:scale-105 transition"
+        >
+          <img
+            className="object-cover w-full h-[200px] rounded-t-lg"
+            src={course.image}
+            alt=""
+          />
+          <div className="p-4">
+            <h3 className="text-lg text-start font-semibold mb-2">{course.title}</h3>
+            <p className="text-sm text-start">{course.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
     )
 }
