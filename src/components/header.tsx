@@ -1,15 +1,24 @@
 import React, { useState } from "react";
 import Logo from "../assets/images/SS Capital Logo.avif";
+import { useNavigate, matchPath, useLocation } from 'react-router-dom';
+
+
 
 const Header = () => {
+    const location = useLocation();
+  const currentPath = location.pathname;
     const [cartCount, setCartCount] = useState(0);
 
     // Simulating adding items to the cart
     const addToCart = () => {
         setCartCount(cartCount + 1);
     };
+    const propertyPaths = ['/terms','/assecibilty','/calendar','/intro_to_technical_analysis_and_understanding','/in_depth_technical_analysis_training'];
+  const isStaticPath = propertyPaths.includes(currentPath);
+  const isDynamicPath = matchPath('/property/:id', currentPath) || matchPath('/agent/:id', currentPath);
+  const isPropertyPage = isStaticPath || isDynamicPath;
     return (
-        <header className="w-full flex justify-between items-center absolute z-20">
+        <header className={`w-full flex justify-between items-center z-20 ${isPropertyPage ? 'relative bg-purple-500' : 'absolute'}` }>
             {/* Logo */}
             <div className="header__logo">
                 <img src={Logo} alt="SS Capital Logo" className="h-16" />

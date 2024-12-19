@@ -48,8 +48,8 @@ const Footer = () => {
         <div className="mt-8 border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center text-sm">
           <p>© 2024 StrictlyStocks</p>
           <ul className="flex space-x-4 mt-4 md:mt-0">
-            <li><a href="#" className="hover:text-white">Accessibility</a></li>
-            <li><a href="#" className="hover:text-white">Terms & Conditions</a></li>
+            <li><p className="hover:text-white cursor-pointer" onClick={()=> window.open('/assecibilty', '_blank')}>Accessibility</p></li>
+            <li><p className="hover:text-white cursor-pointer" onClick={()=> window.open('/terms', '_blank')}>Terms & Conditions</p></li>
             <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
             <li><a href="#" className="hover:text-white">Shipping Policy</a></li>
             <li><a href="#" className="hover:text-white">Refund Policy</a></li>
