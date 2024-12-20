@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const CoursesList = () => {
     return (
         <>
-            <section className="bg-gray-50 py-2 px-8 lg:px-24 ">
+            <section className="bg-gray-50 py-12 px-8 lg:px-24 ">
                 <div className="text-start mb-12">
                     <h2 className="text-4xl pb-2 font-bold lg:text-center text-gray-900">Academy Packages</h2>
                     <h2 className="text-2xl font-semibold " >Stock Market & Technical Analysis</h2>
@@ -77,7 +77,7 @@ const CoursesList = () => {
                     ].map((packageItem) => (
                         <div
                             key={packageItem.id}
-                            className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col justify-between h-full transition-transform transform hover:scale-105"
+                            className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col justify-between h-full transition-transform transform hover:scale-105 "
                         >
                             <img
                                 src={packageItem.image}
@@ -89,7 +89,7 @@ const CoursesList = () => {
                                 </h3>
                                 <p className="text-sm text-gray-600 mt-4 flex-grow">{packageItem.content}</p>
                                 <Link to={packageItem.page}>
-                                <button className="mt-6 px-6 w-fit py-2 hover:bg-purple-100 bg-purple-600 hover:text-black text-white rounded-lg transition">
+                                <button className="mt-6 px-6 w-fit py-2 hover:bg-purple-100 bg-blue-500 hover:text-black text-white rounded-lg transition">
                                     Book Now →
                                 </button>
                                 </Link>

@@ -26,7 +26,7 @@ const HeroSection: React.FC = () => {
             Strictly Stocks is an online trading community where traders come together to learn technical analysis tools to become more educated, efficient, and profitable traders.
           </p>
           <div className="flex items-center gap-4 mb-8">
-            <button className="bg-purple-600 hover:bg-purple-100 hover:text-black text-white font-semibold py-3 px-6 rounded-lg flex items-center gap-2">
+            <button className="bg-blue-700 hover:bg-purple-100 hover:text-black text-white font-semibold py-3 px-6 rounded-lg flex items-center gap-2">
               Get started →
             </button>
           </div>

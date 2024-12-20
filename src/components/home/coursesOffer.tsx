@@ -28,8 +28,8 @@ export default function CoursesOffer() {
     ]
     return (
         
-<section className="bg-purple-600 from-purple-600 to-blue-500 text-white py-0 px-4 md:px-16 lg:px-24 relative z-10">
-  <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-500 opacity-75"></div>
+<section className="bg-purple-600 from-blue-700 to-blue-500 text-white py-0 px-4 md:px-16 lg:px-24 relative z-10">
+  <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-500 opacity-75"></div>
 
   <div className="container mx-auto flex flex-col lg:flex-row py-10 z-20 relative">
     {/* Left Column */}
