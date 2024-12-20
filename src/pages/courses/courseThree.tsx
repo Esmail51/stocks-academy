@@ -5,10 +5,10 @@ import img1 from '../../assets/images/Quality Classroom Picture .avif';
 
 export default function CourseThree() {
   return (
-    <div className='bg-purple-100' >
+    <div className='' >
       <Header></Header>
 
-      <section className=' container py-12 px-4 md:px-16 lg:px-24'>
+      <section className='mt-20  container py-12 px-4 md:px-16 lg:px-24'>
         <div>
 
           <div>
@@ -19,12 +19,12 @@ export default function CourseThree() {
             </p>
 
           </div>
-          <div className='flex gap-20'>
-            <div className='w-1/2 '>
+          <div className='flex flex-col lg:flex-row lg:gap-20 gap-5'>
+            <div className='lg:w-1/2 w-full'>
               <img src={img1} alt='Classroom' className='w-full rounded-lg object-cover h-full' />
 
             </div>
-            <div className='w-1/2 text-start'>
+            <div className='lg:w-1/2 w-full text-start'>
               <div>
                 <div>
                   <p>A comprehensive 5 hour class in Toronto covering introductory concepts of Options Trading and application of Options Trading to diverse aspects of technical analysis, charting tools, understanding of indicators, broader markets, risk management &  Options Trading Techniques. </p>

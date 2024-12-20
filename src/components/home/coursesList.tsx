@@ -9,18 +9,32 @@ import { Link } from "react-router-dom";
 const CoursesList = () => {
     return (
         <>
-            <section className="bg-gray-50 py-5 px-8 lg:px-20">
+            <section className="bg-gray-50 py-2 px-8 lg:px-24 ">
                 <div className="text-start mb-12">
-                    <h2 className="text-4xl font-bold text-gray-900">Academy Packages</h2>
-                    <h2 className="text-2xl font-semibold mt-2" >Stock Market & Technical Analysis</h2>
+                    <h2 className="text-4xl pb-2 font-bold lg:text-center text-gray-900">Academy Packages</h2>
+                    <h2 className="text-2xl font-semibold " >Stock Market & Technical Analysis</h2>
 
-                    <p className="text-gray-600 mt-4">
+                    <div>
+                        <div>
+                        <p className="text-gray-600 mt-4">
                         A comprehensive 7 hour seminar course in Toronto covering introductory concepts of  the North American Equity stock market.
                     </p>
-                    <p className="text-gray-600 mt-4" >Students will learn an interactive style 
+
+                        </div>
+                        <div>
+
+                                <p className="text-gray-600 mt-4" >Students will learn an interactive style 
                         boardroom limited to 6 persons, where students will gain hands-on knowledge of 
                         diverse aspects of technical analysis, charting tools, 
                         understanding of indicators, broader markets, risk management tools. </p>
+                            
+                        </div>
+
+
+                    </div>
+
+                   
+                    
                         {/* <p className="text-gray-600 mt-4">
                     Explore our range of packages tailored to enhance your trading knowledge.
                 </p> */}
@@ -55,8 +69,8 @@ const CoursesList = () => {
                            
                             id: 4,
                             image: img3,
-                            heading: "3-Month Academy Package Inclusive of Both 1+2 (MOST POPULAR)",
-                            content: "A comprehensive 5-hour class in Toronto covering introductory and advanced concepts of the stock market and diverse aspects of technical analysis, charting tools, understanding of indicators, broader markets, risk management & swing trading techniques.",
+                            heading: "COMMUNITY MEMBERSHIP",
+                            content: "Membership includes access to our online trading community & live technical analysis classes held in our spacious state of the art boardroom, in Toronto, Ontario.We Offer A free month membership to members who enroll and complete any Course Package.",
                             page:'membership'
 
                         },

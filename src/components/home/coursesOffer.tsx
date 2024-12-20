@@ -28,10 +28,10 @@ export default function CoursesOffer() {
     ]
     return (
         
-<section className="bg-purple-600 from-purple-600 to-blue-500 text-white py-0 px-4 md:px-16 lg:px-10 relative">
+<section className="bg-purple-600 from-purple-600 to-blue-500 text-white py-0 px-4 md:px-16 lg:px-24 relative z-10">
   <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-500 opacity-75"></div>
 
-  <div className="container mx-auto flex flex-col lg:flex-row p-5 z-20 relative">
+  <div className="container mx-auto flex flex-col lg:flex-row py-10 z-20 relative">
     {/* Left Column */}
     <div className="lg:w-1/3 w-full text-start">
       <h2 className="text-4xl font-bold">Courses We Offer</h2>
@@ -55,14 +55,14 @@ export default function CoursesOffer() {
     </div>
 
     {/* Right Column */}
-    <div className="lg:w-2/3 w-full flex gap-5 mt-10 lg:mt-0">
+    <div className="lg:w-2/3 w-full flex lg:flex-row flex-col gap-5 mt-10 lg:mt-0">
       {courses.map((course, index) => (
         <div
           key={index}
           className="w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.33%-10px)] rounded-lg shadow-lg bg-white text-black hover:scale-105 transition"
         >
           <img
-            className="object-cover w-full h-[200px] rounded-t-lg"
+            className="object-cover w-full lg:h-[200px] h-fit rounded-t-lg"
             src={course.image}
             alt=""
           />

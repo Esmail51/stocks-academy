@@ -1,8 +1,8 @@
 import React from "react";
 
-const ContactUs = () => {
+const ContactUs =()=> {
   return (
-    <section className="py-16 bg-gray-100">
+    <section  className=" py-16 bg-gray-100">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-3xl font-bold text-gray-800 mb-8 text-start">
           Contact Us

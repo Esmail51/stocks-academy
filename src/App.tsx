@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './App.css';
 import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
 import Header from './components/header';
@@ -14,6 +14,11 @@ import CourseFour from './pages/courses/courseFour';
 
 
 function App() {
+  const contactRef = useRef<HTMLDivElement>(null);
+  
+  
+
+
   const router = createBrowserRouter(
     [
       {path: "/", element: <Home />},

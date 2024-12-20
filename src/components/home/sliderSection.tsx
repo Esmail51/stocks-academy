@@ -24,8 +24,10 @@ const SliderSection = () => {
   }, [slides.length]);
 
   return (
-    <section className="relative bg-purple-400 text-white py-20">
-      <div className="max-w-4xl mx-auto text-center px-8 h-36 flex flex-col justify-center">
+    <section className="relative bg-purple-600 from-purple-600 to-blue-500 text-white py-20 z-10">
+  <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-500 opacity-75"></div>
+
+      <div className="max-w-4xl mx-auto text-center px-8 h-36 flex flex-col justify-center relative">
         {slides.map((slide, index) => (
           <div
             key={slide.id}

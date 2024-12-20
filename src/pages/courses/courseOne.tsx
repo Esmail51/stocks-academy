@@ -5,10 +5,10 @@ import img1 from '../../assets/images/Classroom3 .jpeg';
 
 export default function CourseOne() {
   return (
-    <div className='bg-purple-100' >
+    <div className='' >
       <Header></Header>
 
-      <section className=' container py-12 px-4 md:px-16 lg:px-24'>
+      <section className=' mt-20 container py-12 px-4 md:px-16 lg:px-24'>
         <div>
 
           <div>
@@ -19,12 +19,12 @@ export default function CourseOne() {
             </p>
 
           </div>
-          <div className='flex gap-20'>
-            <div className='w-1/2 '>
+          <div className='flex lg:flex-row flex-col lg:gap-20 gap-5'>
+            <div className='lg:w-1/2 w-full '>
               <img src={img1} alt='Classroom' className='w-full rounded-lg object-cover h-full' />
 
             </div>
-            <div className='w-1/2 text-start'>
+            <div className='lg:w-1/2 w-full text-start'>
               <div>
                 <h3 className='text-xl font-semibold text-gray-900 mb-4 text-start'>Learn by communicating and discussing around a boardroom table</h3>
                 <div>

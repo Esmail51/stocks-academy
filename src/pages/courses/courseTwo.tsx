@@ -4,21 +4,21 @@ import img1 from '../../assets/images/Quality Classroom Picture 2 .avif';
 
 export default function CourseTwo() {
   return (
-    <div className='bg-purple-100' >
-    <Header></Header>
+    <div className='bg-white' >
+    <Header ></Header>
 
-    <section className=' container py-12 px-4 md:px-16 lg:px-24'>
+    <section className='mt-20  container py-12 px-4 md:px-16 lg:px-24'>
       <div>
 
         <div>
           <h1 className='text-4xl font-bold text-gray-900 mb-5 text-start'>In-Depth Technical Analysis Training</h1>
         </div>
-        <div className='flex gap-20'>
-          <div className='w-1/2 '>
+        <div className='flex flex-col lg:flex-row lg:gap-20 gap-5'>
+          <div className='lg:w-1/2 w-full '>
             <img src={img1} alt='Classroom' className='w-full rounded-lg object-cover h-full' />
 
           </div>
-          <div className='w-1/2 text-start'>
+          <div className='lg:w-1/2 w-full text-start'>
             <div>
               <div>
                 <p>A Sequel to the Intro seminar series, where students dive into a comprehensive 4 hour seminar course in Toronto covering an in-depth understanding of  technical analysis tools; application of a multitude of technical analysis indicators, along with effective risk management strategies to optimize profitable investing and trading systems. 
