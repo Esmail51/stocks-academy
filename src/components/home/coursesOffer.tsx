@@ -1,7 +1,7 @@
 import React from 'react'
-import img1 from '../../assets/images/stock1.jpg'
-import img3 from '../../assets/images/stock2.jpg'
-import img2 from '../../assets/images/stock3.jpg'
+import img1 from '../../assets/images/stock-market.svg'
+import img3 from '../../assets/images/financial-report.svg'
+import img2 from '../../assets/images/stocks-sell-chart.svg'
 
 
 
@@ -31,12 +31,12 @@ export default function CoursesOffer() {
 <section className="bg-purple-600 from-blue-700 to-blue-500 text-white py-0 px-4 md:px-16 lg:px-24 relative z-10">
   <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-500 opacity-75"></div>
 
-  <div className="container mx-auto flex flex-col lg:flex-row py-10 z-20 relative">
+  <div className="container mx-auto flex flex-col  py-10 z-20 relative gap-10">
     {/* Left Column */}
-    <div className="lg:w-1/3 w-full text-start">
+    <div className=" w-full text-start">
       <h2 className="text-4xl font-bold">Courses We Offer</h2>
       <h2 className="text-xl font-semibold mt-5">Technical Analysis and Understanding the Stock Market</h2>
-      <p className="mt-5">A comprehensive 7-hour seminar course in Toronto covering introductory concepts of the North American Equity stock market.</p>
+      <p className="mt-2">A comprehensive 7-hour seminar course in Toronto covering introductory concepts of the North American Equity stock market.</p>
 
       <div className="flex items-start gap-3 mt-10">
         <a
@@ -55,25 +55,25 @@ export default function CoursesOffer() {
     </div>
 
     {/* Right Column */}
-    <div className="lg:w-2/3 w-full flex lg:flex-row flex-col gap-5 mt-10 lg:mt-0">
+    <div className=" w-full flex lg:flex-row flex-col gap-16 mt-10 lg:mt-0  ">
       {courses.map((course, index) => (
         <div
           key={index}
-          className="w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.33%-10px)] rounded-lg shadow-lg bg-white text-black hover:scale-105 transition"
+          className="w-full p-4 text-white flex flex-col items-center sm:w-[calc(50%-10px)] lg:w-[calc(33.33%-10px)] rounded-lg shadow-lg  hover:scale-105 transition"
         >
           <img
-            className="object-cover w-full lg:h-[200px] h-fit rounded-t-lg"
+            className="object-cover w-full lg:w-[200px] lg:h-[200px] h-fit rounded-t-lg"
             src={course.image}
             alt=""
           />
           <div className="p-4">
-            <h3 className="text-lg text-start font-semibold mb-2">{course.title}</h3>
-            <p className="text-sm text-start">{course.description}</p>
+            <h3 className="text-2xl text-start font-semibold mb-4">{course.title}</h3>
+            <p className="text-lg text-gray-300 text-start">{course.description}</p>
           </div>
         </div>
       ))}
     </div>
   </div>
 </section>
-    )
+    )
 }
