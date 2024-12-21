@@ -29,7 +29,7 @@ const FeatureSection: React.FC = () => {
       Our academy offers in-person course packages, hybrid online and in-class packages, and online interactive course modules. These programs equip students with a working knowledge of technical analysis, charting tools, and techniques to analyze price action, stock price momentum, and both short- and long-term trends.
     </p>
 
-    <button className="px-6 py-3 bg-purple-600 w-fit text-white rounded-lg shadow hover:bg-gray-700 transition">
+    <button className="px-6 py-3 bg-blue-600 w-fit text-white rounded-lg shadow hover:bg-purple-100 hover:text-black transition">
       Join Now →
     </button>
   </div>

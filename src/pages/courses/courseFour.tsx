@@ -12,7 +12,7 @@ export default function CourseFour() {
         <div>
 
           <div>
-            <h1 className='text-4xl font-bold text-gray-900 mb-4 text-start'>COMMUNITY MEMBERSHIP </h1>
+            <h1 className='text-4xl font-bold text-blue-600 mb-4 text-start'>COMMUNITY MEMBERSHIP </h1>
             <p className='text-lg text-gray-700 mb-8 text-start'>
             Membership includes access to a host of resources, all available and accessible from your phone or computer. Currently we are operating on Slack, but transitioning to our own application. 
 
@@ -51,11 +51,11 @@ export default function CourseFour() {
               <div className=''>
                 <h2 className='text-xl font-semibold text-start text-gray-900   my-4'>SLACK MEMBERSHIP ACCESS</h2>
                 <div className=' flex text-start gap-3  text-white'>
-                  <div className='p-4 bg-purple-600 rounded-xl '>
+                  <div className='p-4 bg-blue-600 rounded-xl '>
                     <p className='font-semibold'>Semi Annual Membership </p>
                     <p className='font-semibold'>Price: $669.99 + Tax  </p>
                   </div>
-                  <div className='p-4 bg-purple-600 rounded-xl'>
+                  <div className='p-4 bg-blue-600 rounded-xl'>
                   <p className='font-semibold'>Annual Membership </p>
 
                     <p className='font-semibold'>Price:  $1049.00 + Tax  </p>

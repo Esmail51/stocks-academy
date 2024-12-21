@@ -106,7 +106,12 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
           >
             Courses
           </li>
-          <li className="cursor-pointer hover:text-white">About</li>
+          <li className="cursor-pointer hover:text-white"
+          onClick={() => {
+            onScrollTo?.("about");
+            setIsMenuOpen(false);
+          }}
+          >About</li>
           <li
             className="cursor-pointer hover:text-white"
             onClick={() => {
@@ -131,7 +136,9 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
           >
             Courses
           </li>
-          <li className="mx-4 cursor-pointer hover:underline">About</li>
+          <li className="mx-4 cursor-pointer hover:underline"
+          onClick={() => onScrollTo?.("about")}
+          >About</li>
           <li
             className="mx-4 cursor-pointer hover:underline"
             onClick={() => onScrollTo?.("contact")}

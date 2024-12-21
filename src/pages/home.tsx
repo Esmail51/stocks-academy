@@ -13,6 +13,8 @@ import VideoPlayer from "../components/home/videoPlayer";
 const Home: React.FC = () => {
     const contactRef = useRef<HTMLDivElement>(null);
     const coursesRef = useRef<HTMLDivElement>(null);
+    const aboutRef = useRef<HTMLDivElement>(null);
+
 
     const handleScrollTo = (section: string) => {
         if (section === "contact" && contactRef.current) {
@@ -20,13 +22,19 @@ const Home: React.FC = () => {
         } else if (section === "courses" && coursesRef.current) {
             coursesRef.current.scrollIntoView({ behavior: "smooth" });
         }
+     else if (section === "about" && aboutRef.current) {
+        aboutRef.current.scrollIntoView({ behavior: "smooth" });
+    }
     };
 
     return (
         <div className="home ">
             <Header onScrollTo={handleScrollTo} />
             <HeroSection  />
-            <HeroSection2  />
+            <div ref={aboutRef} >
+
+            <HeroSection2 />
+            </div>
             <VideoPlayer/>
             <CoursesOffer />
             <FeatureSection />

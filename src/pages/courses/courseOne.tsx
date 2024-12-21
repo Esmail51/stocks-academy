@@ -12,7 +12,7 @@ export default function CourseOne() {
         <div>
 
           <div>
-            <h1 className='text-4xl font-bold text-gray-900 mb-4 text-start'>Technical Analysis and Understanding the Stock Market </h1>
+            <h1 className='text-4xl font-bold text-blue-600 mb-4 text-start'>Technical Analysis and Understanding the Stock Market </h1>
             <p className='text-lg text-gray-700 mb-8 text-start'>
               A comprehensive 7 hour seminar course in Toronto covering introductory concepts of  the North American Equity stock market.
 
@@ -46,7 +46,7 @@ export default function CourseOne() {
                   <div>
                     <p className='font-semibold'>Price: $399.00 + Tax </p>
                   </div>
-                  <button className="inline-block bg-purple-500 text-white font-semibold text-sm px-3 py-2 mt-2 rounded-lg shadow-lg  hover:bg-gray-100 hover:text-black">Course Enrollment</button>
+                  <button className="inline-block bg-blue-600 text-white font-semibold text-sm px-3 py-2 mt-2 rounded-lg shadow-lg  hover:bg-purple-100 hover:text-black transition">Course Enrollment</button>
                 </div>
 
 

@@ -12,7 +12,7 @@ export default function CourseThree() {
         <div>
 
           <div>
-            <h1 className='text-4xl font-bold text-gray-900 mb-4 text-start'>An Introduction to Options Trading</h1>
+            <h1 className='text-4xl font-bold text-blue-600 mb-4 text-start'>An Introduction to Options Trading</h1>
             <p className='text-lg text-gray-700 mb-8 text-start'>
             A comprehensive 5 hour class in Toronto covering introductory concepts of Options Trading and application of Options Trading to diverse aspects of technical analysis, charting tools, understanding of indicators, broader markets, risk management &  Options Trading Techniques.
 
@@ -46,7 +46,7 @@ export default function CourseThree() {
                     </p>
 
                   </div>
-                  <button className="inline-block bg-purple-500 text-white font-semibold text-sm px-3 py-2 mt-2 rounded-lg shadow-lg  hover:bg-gray-100 hover:text-black">Course Enrollment</button>
+                  <button className="inline-block bg-blue-600 text-white font-semibold text-sm px-3 py-2 mt-2 rounded-lg shadow-lg  hover:bg-purple-100 transition hover:text-black">Course Enrollment</button>
                 </div>
 
 

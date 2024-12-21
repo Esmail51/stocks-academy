@@ -11,7 +11,7 @@ export default function CourseTwo() {
       <div>
 
         <div>
-          <h1 className='text-4xl font-bold text-gray-900 mb-5 text-start'>In-Depth Technical Analysis Training</h1>
+          <h1 className='text-4xl font-bold text-blue-600 mb-5 text-start'>In-Depth Technical Analysis Training</h1>
         </div>
         <div className='flex flex-col lg:flex-row lg:gap-20 gap-5'>
           <div className='lg:w-1/2 w-full '>
@@ -37,7 +37,7 @@ export default function CourseTwo() {
                   <p className='font-semibold'>Price: $249.00 + Tax </p>
                   <p className='font-semibold'>Pre-requisites:  Complete of Intro Course. </p>
                 </div>
-                <button className="inline-block bg-purple-500 text-white font-semibold text-sm px-3 py-2 mt-2 rounded-lg shadow-lg  hover:bg-gray-100 hover:text-black">Course Enrollment</button>
+                <button className="inline-block bg-blue-600 text-white font-semibold text-sm px-3 py-2 mt-2 rounded-lg shadow-lg  hover:bg-purple-100 transition hover:text-black">Course Enrollment</button>
               </div>
 
 

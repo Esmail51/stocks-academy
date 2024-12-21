@@ -52,7 +52,7 @@ const Footer = () => {
             <li><p className="hover:text-blue-700 cursor-pointer" onClick={()=> window.open('/assecibilty', '_blank')}>Accessibility</p></li>
             <li><p className="hover:text-blue-700 cursor-pointer" onClick={()=> window.open('/terms', '_blank')}>Terms & Conditions</p></li>
             <li><a href="#" className="hover:text-blue-700">Privacy Policy</a></li>
-            <li><a href="#" className="hover:text-blue-700">Shipping Policy</a></li>
+            {/* <li><a href="#" className="hover:text-blue-700">Shipping Policy</a></li> */}
             <li><a href="#" className="hover:text-blue-700">Refund Policy</a></li>
           </ul>
         </div>
