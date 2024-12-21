@@ -1,12 +1,14 @@
 import React from 'react'
 import Header from '../../components/header'
 import img1 from '../../assets/images/Classroom3 .jpeg';
+import ScrollToTop from '../../components/scrollTop';
 
 
 export default function CourseOne() {
   return (
     <div className='' >
       <Header></Header>
+      <ScrollToTop />
 
       <section className=' mt-20 container py-12 px-4 md:px-16 lg:px-24'>
         <div>

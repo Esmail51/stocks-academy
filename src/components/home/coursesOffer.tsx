@@ -59,16 +59,16 @@ export default function CoursesOffer() {
       {courses.map((course, index) => (
         <div
           key={index}
-          className="w-full p-4 text-white flex flex-col items-center sm:w-[calc(50%-10px)] lg:w-[calc(33.33%-10px)] rounded-lg shadow-lg  hover:scale-105 transition"
+          className="w-full p-4 text-white bg-purple-800 to-purple-500 flex flex-col items-center sm:w-[calc(50%-10px)] lg:w-[calc(33.33%-10px)] rounded-lg shadow-lg  hover:scale-105 transition"
         >
           <img
-            className="object-cover w-full lg:w-[200px] lg:h-[200px] h-fit rounded-t-lg"
+            className="object-cover w-full  lg:w-[200px] lg:h-[200px] h-fit rounded-t-lg"
             src={course.image}
             alt=""
           />
           <div className="p-4">
             <h3 className="text-2xl text-start font-semibold mb-4">{course.title}</h3>
-            <p className="text-lg text-gray-300 text-start">{course.description}</p>
+            <p className="text-lg text-gray-200 text-start">{course.description}</p>
           </div>
         </div>
       ))}

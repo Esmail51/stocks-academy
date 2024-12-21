@@ -12,10 +12,7 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
   const [cartCount, setCartCount] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Simulating adding items to the cart
-  const addToCart = () => {
-    setCartCount(cartCount + 1);
-  };
+  
 
   const propertyPaths = [
     "/terms",
@@ -128,19 +125,19 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
       <nav className="hidden md:flex items-center text-purple-500 text-lg font-semibold">
         <ul className="flex">
           <Link to="/">
-            <li className="mx-4 cursor-pointer hover:underline">Home</li>
+            <li className="mx-4 cursor-pointer hover:text-black">Home</li>
           </Link>
           <li
-            className="mx-4 cursor-pointer hover:underline"
+            className="mx-4 cursor-pointer hover:text-black"
             onClick={() => onScrollTo?.("courses")}
           >
             Courses
           </li>
-          <li className="mx-4 cursor-pointer hover:underline"
+          <li className="mx-4 cursor-pointer hover:text-black"
           onClick={() => onScrollTo?.("about")}
           >About</li>
           <li
-            className="mx-4 cursor-pointer hover:underline"
+            className="mx-4 cursor-pointer hover:text-black"
             onClick={() => onScrollTo?.("contact")}
           >
             Contact

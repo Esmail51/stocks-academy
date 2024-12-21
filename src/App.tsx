@@ -14,7 +14,7 @@ import CourseFour from './pages/courses/courseFour';
 
 
 function App() {
-  const contactRef = useRef<HTMLDivElement>(null);
+  
   
   
 
