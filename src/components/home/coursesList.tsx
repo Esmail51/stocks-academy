@@ -81,7 +81,7 @@ const CoursesList = () => {
                 <ReadMoreText content={packageItem.content} fixedHeight={100} />
               </div>
               <Link to={packageItem.page}>
-                <button className="mt-6 px-6 w-fit py-2 hover:bg-purple-100 bg-blue-600 hover:text-black text-white rounded-lg transition">
+                <button className="mt-6 px-6 w-fit py-2 hover:bg-purple-100 bg-[#4285F4] hover:text-black text-white rounded-lg transition">
                   Book Now →
                 </button>
               </Link>

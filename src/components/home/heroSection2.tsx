@@ -24,7 +24,7 @@ export default function heroSection2() {
       <div className="container mx-auto relative z-20">
         {/* Header */}
         <div className="text-center mb-10">
-          <h2 className="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-700 drop-shadow-lg">
+          <h2 className="text-5xl font-extrabold bg-clip-text text-transparent bg-[#4285F4] drop-shadow-lg">
             Master the Markets
           </h2>
           <h3 className="text-3xl font-semibold mt-4">
@@ -35,7 +35,7 @@ export default function heroSection2() {
         {/* Content Section */}
         <div className="flex flex-col lg:flex-row gap-8 text-start">
           {/* Text Boxes */}
-          <div className="flex-1 bg-blue-700 text-gray-200 hover:bg-blue-50 hover:text-black rounded-lg shadow-lg p-6 transform transition duration-300 hover:scale-105">
+          <div className="flex-1 bg-[#4285F4] text-gray-200 hover:bg-blue-50 hover:text-black rounded-lg shadow-lg p-6 transform transition duration-300 hover:scale-105">
             <p className="text-lg leading-relaxed">
               Strictly Stocks Academy offers a series of comprehensive in-person
               classes held in a state-of-the-art boardroom in Toronto, Ontario,
@@ -45,7 +45,7 @@ export default function heroSection2() {
             </p>
           </div>
 
-          <div className="flex-1 bg-blue-700 text-gray-200 hover:bg-blue-50 hover:text-black rounded-lg shadow-lg p-6 transform transition duration-300 hover:scale-105">
+          <div className="flex-1 bg-[#4285F4] text-gray-200 hover:bg-blue-50 hover:text-black rounded-lg shadow-lg p-6 transform transition duration-300 hover:scale-105">
             <p className="text-lg leading-relaxed">
               Studying historic chart patterns and understanding price action using
               a myriad of technical analysis indicators allows for more informed,
@@ -53,7 +53,7 @@ export default function heroSection2() {
             </p>
           </div>
 
-          <div className="flex-1 bg-blue-700 text-gray-200 hover:bg-blue-50 hover:text-black rounded-lg shadow-lg p-6 transform transition duration-300 hover:scale-105">
+          <div className="flex-1 bg-[#4285F4] text-gray-200 hover:bg-blue-50 hover:text-black rounded-lg shadow-lg p-6 transform transition duration-300 hover:scale-105">
             <p className="text-lg leading-relaxed">
               Students dive into a curriculum to equip themselves and refine their
               knowledge of technical analysis tools and risk management systems,
@@ -66,7 +66,7 @@ export default function heroSection2() {
         <div className="mt-10 text-center">
           <a
             href="/courses"
-            className="inline-block bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500  text-white font-semibold text-lg px-5 py-3 rounded-full shadow-lg hover:shadow-2xl transform transition duration-300 hover:scale-105"
+            className="inline-block bg-googleBlue-500  text-white font-semibold text-lg px-5 py-3 rounded-full shadow-lg hover:shadow-2xl transform transition duration-300 hover:scale-105"
           >
             Explore Courses
           </a>

@@ -24,7 +24,7 @@ const SliderSection = () => {
   }, [slides.length]);
 
   return (
-    <section className="relative bg-purple-600 from-blue-600 to-blue-500 text-white py-20 z-10">
+    <section className="relative bg-[#4285F4] text-white py-20 z-10">
   <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-500 opacity-75"></div>
 
       <div className="max-w-4xl mx-auto text-center px-8 h-36 flex flex-col justify-center relative">

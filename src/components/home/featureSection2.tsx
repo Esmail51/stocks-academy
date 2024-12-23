@@ -4,7 +4,7 @@ import coachingImg from '../../assets/images/deposit1 (1).jpg';
 
 const FeatureSection2: React.FC = () => {
   return (
-    <section className="bg-purple-600 from-blue-600 to-blue-500 text-white relative py-8 lg:px-24 px-8">
+    <section className="bg-[#4285F4] text-white relative py-8 lg:px-24 px-8">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-500 opacity-75"></div>
     <div className=" mx-auto grid grid-cols-1 lg:flex lg:justify-between gap-8 items-start  relative">
         {/* Left: Image */}

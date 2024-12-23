@@ -12,7 +12,7 @@ import CourseTwo from './pages/courses/courseTwo';
 import CourseThree from './pages/courses/courseThree';
 import CourseFour from './pages/courses/courseFour';
 import MembershipPage from './pages/membershipPage';
-
+import ScrollToTop from './components/scrollTop';
 
 function App() {
   
@@ -21,7 +21,9 @@ function App() {
 
 
   const router = createBrowserRouter(
+
     [
+      
       {path: "/", element: <Home />},
       { path: "/calendar", element: <ClassCalendar /> },
       {path: "/terms", element: <TermsCondition />},
@@ -43,6 +45,7 @@ function App() {
   );
   return (
     <div className="App">
+      {/* <ScrollToTop /> */}
       <RouterProvider router={router} />
       <Footer />
     </div>

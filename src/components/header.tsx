@@ -122,7 +122,7 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
       </div>
 
       {/* Desktop Navigation */}
-      <nav className="hidden md:flex items-center text-purple-500 text-lg font-semibold">
+      <nav className="hidden md:flex items-center gap-7 text-googleBlue-500 text-lg font-medium">
         <ul className="flex">
           <Link to="/">
             <li className="mx-4 cursor-pointer hover:text-black">Home</li>
@@ -143,6 +143,12 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
             Contact
           </li>
         </ul>
+
+        {/* <div className="flex gap-3">
+          <button className="py-2 px-3 border-googleBlue-500 border rounded-full text-googleBlue-500"><p>Login</p></button>
+          <button className="py-2 px-3 bg-googleBlue-500 rounded-full"><p>Sign Up</p></button>
+
+        </div> */}
       </nav>
     </header>
   );

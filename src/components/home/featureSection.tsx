@@ -13,7 +13,7 @@ const FeatureSection: React.FC = () => {
           viewBox="0 0 24 24"
           strokeWidth="2"
           stroke="currentColor"
-          className="h-6 w-6 text-purple-600"
+          className="h-6 w-6 text-purple-500"
         >
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18m9-9H3" />
         </svg>
@@ -29,7 +29,7 @@ const FeatureSection: React.FC = () => {
       Our academy offers in-person course packages, hybrid online and in-class packages, and online interactive course modules. These programs equip students with a working knowledge of technical analysis, charting tools, and techniques to analyze price action, stock price momentum, and both short- and long-term trends.
     </p>
 
-    <button className="px-6 py-3 bg-blue-600 w-fit text-white rounded-lg shadow hover:bg-purple-100 hover:text-black transition">
+    <button className="px-6 py-3 bg-[#4285F4] w-fit text-white rounded-lg shadow hover:bg-purple-100 hover:text-black transition">
       Join Now →
     </button>
   </div>
@@ -64,7 +64,7 @@ const FeatureSection: React.FC = () => {
         </span>
         <h3 className="text-lg font-semibold text-gray-900">{feature.title}</h3>
         <p className="text-sm text-gray-600 mt-2 w-80">{feature.text}</p>
-        <span className="block mt-4 w-16 h-1 bg-purple-500"></span>
+        <span className="block mt-4 w-16 h-1 bg-googleBlue-500"></span>
       </div>
     ))}
   </div>
