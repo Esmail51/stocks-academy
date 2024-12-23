@@ -11,6 +11,7 @@ import CourseOne from './pages/courses/courseOne';
 import CourseTwo from './pages/courses/courseTwo';
 import CourseThree from './pages/courses/courseThree';
 import CourseFour from './pages/courses/courseFour';
+import MembershipPage from './pages/membershipPage';
 
 
 function App() {
@@ -28,7 +29,8 @@ function App() {
       {path: "/intro_to_technical_analysis_and_understanding", element: <CourseOne/>},
       {path: "/in_depth_technical_analysis_training", element: <CourseTwo/>},
       {path: "/an_introduction_to_options_trading", element: <CourseThree/>},
-      {path: "/membership", element: <CourseFour/>}
+      {path: "/membership", element: <CourseFour/>},
+      {path:"/choose_plan",element:<MembershipPage/>}
 
 
 

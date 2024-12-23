@@ -9,6 +9,7 @@ import SliderSection from "../components/home/sliderSection";
 import HeroSection2 from "../components/home/heroSection2";
 import CoursesOffer from "../components/home/coursesOffer";
 import VideoPlayer from "../components/home/videoPlayer";
+import Membership from "../components/home/membership";
 
 const Home: React.FC = () => {
     const contactRef = useRef<HTMLDivElement>(null);
@@ -22,26 +23,27 @@ const Home: React.FC = () => {
         } else if (section === "courses" && coursesRef.current) {
             coursesRef.current.scrollIntoView({ behavior: "smooth" });
         }
-     else if (section === "about" && aboutRef.current) {
-        aboutRef.current.scrollIntoView({ behavior: "smooth" });
-    }
+        else if (section === "about" && aboutRef.current) {
+            aboutRef.current.scrollIntoView({ behavior: "smooth" });
+        }
     };
 
     return (
         <div className="home ">
             <Header onScrollTo={handleScrollTo} />
-            <HeroSection  />
+            <HeroSection />
             <div ref={aboutRef} >
 
-            <HeroSection2 />
+                <HeroSection2 />
             </div>
-            <VideoPlayer/>
+            <VideoPlayer />
             <CoursesOffer />
             <FeatureSection />
             <FeatureSection2 />
             <div ref={coursesRef}>
                 <CoursesList />
             </div>
+            <Membership />
             <SliderSection />
             <div ref={contactRef}>
                 <ContactUs />
