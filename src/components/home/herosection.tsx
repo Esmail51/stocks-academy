@@ -11,7 +11,7 @@ const HeroSection: React.FC = () => {
 
   return (
 
-<div className="flex flex-col   md:flex-row items-center justify-between px-6 md:px-12 lg:px-24 py-12 ">
+<div className="flex flex-col pb-10  md:flex-row items-center justify-center md:justify-between px-6 md:px-12 lg:px-24 py-3 ">
   {/* Left Section */}
   <div className="flex-grow max-w-lg text-center md:text-left order-last md:order-none">
     <h1 className="hidden md:block lg:text-[76px] md:text-5xl text-4xl font-medium leading-tight mb-6">
@@ -39,7 +39,7 @@ const HeroSection: React.FC = () => {
 
   {/* Right Section */}
   <motion.div
-    className="md:flex flex-col md:flex-row items-stretch w-full h-[500px] space-x-4 md-1 md:mt-0"
+    className="md:flex flex-col md:flex-row items-stretch w-full md:w-[50%] h-[500px] lg:justify-around space-x-4 md-1 lg:mt-12 md:mt-0"
     initial={{ opacity: 0, x: 100 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ duration: 1.5, ease: "easeInOut" }} 
@@ -68,7 +68,8 @@ const HeroSection: React.FC = () => {
     {/* </div> */}
 
     {/* Right Image */}
-    <div className="relative w-full ">
+    {/* <div className='w-1/2'></div> */}
+    <div className="relative lg:w-3/4 ">
       {/* <img
         src="https://templates.sparklethings.com/virtura/wp-content/uploads/sites/31/2024/12/image-HY6B4QB.jpg"
         alt="Student using tablet"

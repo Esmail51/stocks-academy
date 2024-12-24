@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import video1 from '../../assets/vedios/Just video with audio.webm'
+import video1 from '../../assets/vedios/strictly2 - Made with Clipchamp.mp4'
 
 export default function VideoPlayer() {
     const [isPlaying, setIsPlaying] = useState(false);
