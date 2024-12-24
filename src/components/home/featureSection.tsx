@@ -2,7 +2,7 @@ import React from "react";
 
 const FeatureSection: React.FC = () => {
     return(
-        <section className="relative bg-white min-h-screen flex flex-col lg:flex-row px-8 lg:px-24 py-16 items-stretch">
+        <section className="relative bg-gray-100 min-h-screen flex flex-col lg:flex-row px-8 lg:px-24 py-16 items-stretch">
   {/* Left Section */}
   <div className="lg:w-1/2 flex flex-col justify-around space-y-6 ">
     <div className="flex items-center space-x-2">

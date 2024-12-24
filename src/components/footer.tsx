@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="bg-purple-50 text-black shadow-2xl  shadow-gray-500 py-10">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 text-start">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 text-start">
           {/* Column 1 */}
           <div>
             <img src={Logo} alt="Logo" className="w-32 mb-4" />
@@ -28,12 +28,24 @@ const Footer = () => {
             <ul className="mt-4 space-y-2">
               <li><a href="#" className="hover:text-blue-700">Introduction to Technical Analysis and <br />Understanding the Stock Market</a></li>
               <li><a href="#" className="hover:text-blue-700">In-Depth Technical Analysis Training</a></li>
-              <li><a href="#" className="hover:text-blue-700">3-Month Academy Package Inclusive of Both 1+2 (MOST POPULAR)</a></li>
+              {/* <li><a href="#" className="hover:text-blue-700">Membership</a></li> */}
               <li><a href="#" className="hover:text-blue-700">Options 101: An Introduction to Options Trading</a></li>
             </ul>
           </div>
 
           {/* Column 3 */}
+
+
+          <div className="w-fit">
+            <h3 className="text-lg font-semibold text-black">Membership</h3>
+            <p className="mt-4 text-sm hover:text-blue-700 cursor-pointer"><a href="/choose_plan">Semi Annual Membership</a></p>
+            <p className="text-sm mt-2 hover:text-blue-700 cursor-pointer"><a href="/choose_plan">Annual Membership</a></p>
+         
+          </div>
+
+
+
+          {/* Column 4 */}
           <div>
             <h3 className="text-lg font-semibold text-black">Need help?</h3>
             <p className="mt-4 text-sm">Call us directly?</p>

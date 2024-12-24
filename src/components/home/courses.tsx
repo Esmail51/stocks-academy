@@ -55,7 +55,7 @@ const Courses = () => {
     <>
       <Header />
       {/* Add padding or margin to avoid overlap */}
-      <section className="py-16 mt-16">
+      <section className="py-16">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-800">
             Affordable Courses, Exceptional Learning

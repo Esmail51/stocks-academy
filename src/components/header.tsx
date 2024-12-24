@@ -23,6 +23,7 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
     "/in_depth_technical_analysis_training",
     "/an_introduction_to_options_trading",
     "/membership",
+    "/contact"
   ];
   const isStaticPath = propertyPaths.includes(currentPath);
   const isDynamicPath =
@@ -34,7 +35,7 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
 
   return (
     <header
-  className={`fixed top-0 left-0 w-full flex justify-between md:px-16 lg:px-24 px-5 items-center z-20 ${
+  className={`top-0 left-0 w-full flex justify-between md:px-16 lg:px-24 px-5 items-center z-20 ${
     isPropertyPage
       ? "bg-white shadow-gray-300 shadow-md"
       : "bg-white shadow-md"
@@ -108,15 +109,14 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
           </Link>
           <li className="cursor-pointer hover:text-white"
           onClick={() => {
-            onScrollTo?.("about");
+            navigate('/choose_plan')
             setIsMenuOpen(false);
           }}
-          >About</li>
+          >Membership</li>
           <li
             className="cursor-pointer hover:text-white"
             onClick={() => {
-              onScrollTo?.("contact");
-              setIsMenuOpen(false);
+              navigate('/contact')
             }}
           >
             Contact
@@ -135,11 +135,13 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
             Courses
           </li>
           <li className="mx-4 cursor-pointer hover:text-black"
-          onClick={() => onScrollTo?.("about")}
-          >About</li>
+          onClick={() => navigate('/choose_plan')}
+          >Membership</li>
           <li
             className="mx-4 cursor-pointer hover:text-black"
-            onClick={() => onScrollTo?.("contact")}
+            onClick={() => {
+              navigate('/contact')
+            }}
           >
             Contact
           </li>

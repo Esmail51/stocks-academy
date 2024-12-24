@@ -40,7 +40,7 @@ const CoursesList = () => {
   <h2 className="text-4xl font-bold text-gray-900 mb-4 lg:text-center">
     Academy Packages
   </h2>
-  <h3 className="text-2xl font-semibold text-gray-800 mb-6 lg:text-center">
+  {/* <h3 className="text-2xl font-semibold text-gray-800 mb-6 lg:text-center">
     Stock Market & Technical Analysis
   </h3>
   <p className="text-lg text-gray-700 leading-relaxed mb-6">
@@ -48,11 +48,11 @@ const CoursesList = () => {
   </p>
   <p className="text-lg text-gray-700 leading-relaxed">
     In this interactive-style boardroom course, limited to just 6 students, you will delve into various aspects of technical analysis, charting tools, risk management, and more. This course offers a personalized learning environment to ensure you gain the practical knowledge needed for a confident start in trading.
-  </p>
+  </p> */}
 </div>
 
-      <div className="flex flex-col lg:flex-row gap-12">
-        <div className="lg:w-4/5 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-center">
+      <div className="flex flex-col  gap-12">
+        <div className="lg:w-full w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-center">
           {academicPackages.map((packageItem) => (
             <div
               key={packageItem.id}
@@ -64,14 +64,14 @@ const CoursesList = () => {
                 className="w-full h-56 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{packageItem.heading}</h3>
+                <h3 className="text-lg text-start font-md text-gray-900 mb-3">{packageItem.heading}</h3>
               </div>
             </div>
           ))}
         </div>
-        <div className="w-full lg:w-1/5 text-center flex justify-center items-center">
+        <div className="w-full  text-center flex justify-center items-center">
           <Link to="/courses">
-            <button className="px-8 py-3 bg-purple-600 text-white text-lg rounded-full hover:bg-purple-700 transition duration-200">
+            <button className="px-8 py-3 bg-googleBlue-500 text-white text-lg rounded-full hover:bg-purple-700 transition duration-200">
               Explore More →
             </button>
           </Link>

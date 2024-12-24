@@ -10,7 +10,7 @@ export default function CourseOne() {
       <Header></Header>
       <ScrollToTop />
 
-      <section className=' mt-20 container py-12 px-4 md:px-16 lg:px-24'>
+      <section className=' container py-12 px-4 md:px-16 lg:px-24'>
         <div>
 
           <div>

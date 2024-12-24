@@ -10,7 +10,7 @@ import ScrollToTop from '../components/scrollTop'
 
 export default function MembershipPage() {
     return (
-        <section className='mt-20   '>
+        <section className='   '>
             <Header />
             <ScrollToTop />
 
@@ -46,7 +46,7 @@ export default function MembershipPage() {
                         <svg width="66" height="65" viewBox="0 0 66 65" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_2028_10786)"><g filter="url(#filter0_d_2028_10786)"><path d="M32.5389 50.533C14.3272 42.9664 15.2145 31.2772 15.2139 20.5274C21.9762 20.1099 29.5815 16.2831 32.5389 14.4219C41.0457 19.5359 46.6114 20.0055 50.1257 20.5274C49.1342 35.9216 47.2034 44.6884 32.5389 50.533Z" fill="url(#paint0_linear_2028_10786)" stroke="url(#paint1_linear_2028_10786)" stroke-width="3.57376"></path></g><path d="M27.034 35.1266C26.5942 35.1266 26.2116 34.8255 26.1083 34.398L25.047 30.0072C24.8421 29.1592 25.7903 28.5049 26.5104 28.9973L28.728 30.5139C29.1439 30.7984 29.7095 30.7096 30.0183 30.3114L31.9001 27.8846C32.2813 27.3929 33.024 27.3929 33.4053 27.8846L35.2871 30.3114C35.5959 30.7096 36.1614 30.7984 36.5773 30.5139L38.795 28.9973C39.5151 28.5049 40.4633 29.1592 40.2583 30.0072L39.1971 34.398C39.0938 34.8255 38.7112 35.1266 38.2714 35.1266H27.034ZM39.021 37.1798C39.021 37.5904 38.6571 37.8641 38.1112 37.8641H27.1941C26.6483 37.8641 26.2844 37.5904 26.2844 37.1798C26.2844 36.8018 26.5908 36.4954 26.9687 36.4954H38.3366C38.7146 36.4954 39.021 36.8018 39.021 37.1798Z" fill="white"></path></g><defs><filter id="filter0_d_2028_10786" x="3.41797" y="6.32031" width="58.5977" height="60.1406" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix><feOffset dy="4"></feOffset><feGaussianBlur stdDeviation="5"></feGaussianBlur><feComposite in2="hardAlpha" operator="out"></feComposite><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2028_10786"></feBlend><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2028_10786" result="shape"></feBlend></filter><linearGradient id="paint0_linear_2028_10786" x1="32.7715" y1="51" x2="48.1921" y2="20.6963" gradientUnits="userSpaceOnUse"><stop stop-color="#AB880D"></stop><stop offset="1" stop-color="#DAC54C"></stop></linearGradient><linearGradient id="paint1_linear_2028_10786" x1="49.7715" y1="17.5" x2="23.2715" y2="48" gradientUnits="userSpaceOnUse"><stop stop-color="#AB880D"></stop><stop offset="1" stop-color="#DAC54C"></stop></linearGradient><clipPath id="clip0_2028_10786"><rect width="65" height="65" fill="white" transform="translate(0.769531)"></rect></clipPath></defs></svg>
 
 
-                            <h1 className='text-xl font-semiboldfont-semibold'>Annual Membership</h1>
+                            <h1 className='text-xl font-semibold'>Annual Membership</h1>
                             <p className='text-4xl mt-8 font-bold'>$ 1049.00 <span className='font-semibold text-xl'> + Tax</span></p>
                             {/* <p className='text-2xl font-semibold' > + Tax</p> */}
 

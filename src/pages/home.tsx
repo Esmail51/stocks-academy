@@ -33,21 +33,13 @@ const Home: React.FC = () => {
         <div className="home ">
             <Header onScrollTo={handleScrollTo} />
             <HeroSection  />
-            <div ref={aboutRef} >
             <HeroSection2 />
-            </div>
-            <VideoPlayer/>
             <CoursesOffer />
             <FeatureSection />
             <FeatureSection2 />
-            <div ref={coursesRef}>
-                <CoursesList />
-            </div>
+            <CoursesList />
             <Membership/>
             <SliderSection />
-            <div ref={contactRef}>
-                <ContactUs />
-            </div>
         </div>
     );
 };

@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import img1 from '../../assets/images/subscription2.png'
+import img1 from '../../assets/images/cards.png'
 
 export default function Membership() {
     return (
         <section className='py-10 lg:px-24 px-5 bg-white text-black gap-10'>
             <div className='flex items-center lg:flex-row flex-col gap-10'>
                 <div className='lg:w-1/2 '>
-                    <img className='' src={img1} alt="" />
+                    <img className='w-[85%]' src={img1} alt="" />
                 </div>
                 <div className='lg:w-1/2 text-start flex flex-col items-start gap-5'>
                     <h1 className='text-4xl font-semibold' >Membership plans</h1>
