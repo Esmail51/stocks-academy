@@ -4,6 +4,7 @@ import Header from "../components/header";
 import { IoLocationOutline } from "react-icons/io5";
 import { IoTimeOutline } from "react-icons/io5";
 import { IoCallOutline } from "react-icons/io5";
+import ContactUs from "../components/home/constactUs";
 
 interface IFormInput {
   name: string;
@@ -24,7 +25,7 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <>
+    <div className="w-full">
       <Header />
       <div className="min-h-screen bg-gray-50 flex justify-center items-center">
         <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-4xl">
@@ -101,16 +102,22 @@ const ContactForm: React.FC = () => {
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-googleBlue-500 text-white py-2 px-4 rounded hover:bg-white hover:text-black transition"
+                  className="w-full bg-googleBlue-500 text-white py-2 px-4 rounded hover:bg-purple-100 hover:text-black transition"
                 >
                   SEND MESSAGE
                 </button>
               </form>
             </div>
           </div>
+
+
         </div>
+
       </div>
-    </>
+
+      <ContactUs></ContactUs>
+
+    </div>
   );
 };
 

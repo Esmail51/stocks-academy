@@ -14,10 +14,10 @@ const HeroSection: React.FC = () => {
 <div className="flex flex-col   md:flex-row items-center justify-between px-6 md:px-12 lg:px-24 py-12 ">
   {/* Left Section */}
   <div className="flex-grow max-w-lg text-center md:text-left order-last md:order-none">
-    <h1 className="lg:text-[76px] md:text-5xl text-4xl font-medium leading-tight mb-6">
+    <h1 className="hidden md:block lg:text-[76px] md:text-5xl text-4xl font-medium leading-tight mb-6">
       Strictly Stocks <br />Academy
     </h1>
-    <p className="text-gray-800 text-2xl font-medium mb-3">Preparation meets Profits</p>
+    <p className="text-gray-800 text-2xl font-medium mb-3 mt-28 md:mt-0">Preparation meets Profits</p>
     <p className="text-gray-600 mb-6">
       Strictly Stocks is an online trading community where traders come together to learn technical analysis tools to become more educated, efficient, and profitable traders.
     </p>
@@ -39,7 +39,7 @@ const HeroSection: React.FC = () => {
 
   {/* Right Section */}
   <motion.div
-    className="md:flex flex-col md:flex-row items-stretch w-full md:w-[50%] h-[500px] space-x-4 md-1 lg:mt-12 md:mt-0"
+    className="md:flex flex-col md:flex-row items-stretch w-full h-[500px] space-x-4 md-1 md:mt-0"
     initial={{ opacity: 0, x: 100 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ duration: 1.5, ease: "easeInOut" }} 

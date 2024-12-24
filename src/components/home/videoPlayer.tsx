@@ -27,14 +27,14 @@ export default function VideoPlayer() {
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Video */}
-      <h1 className="lg:hidden lg:text-[76px] md:text-5xl text-4xl font-medium leading-tight mb-6">
+      <h1 className="md:hidden lg:text-[76px] md:text-5xl text-4xl font-medium leading-tight mb-6">
       Strictly Stocks <br />Academy
     </h1>
       <video
         ref={videoRef}
         controls={true} // Hide default controls
         width="100%"
-        className="rounded-xl h-[480px] lg:h-full object-cover "
+        className="rounded-xl h-[480px] md:h-full object-cover "
         autoPlay={true}
         
         loop

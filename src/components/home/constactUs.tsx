@@ -2,65 +2,8 @@ import React from "react";
 
 const ContactUs =()=> {
   return (
-    <section  className=" py-16 bg-gray-100">
-      <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
-          Contact Us
-        </h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Left Section */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-start my-auto">
-            {/* Column 1 */}
-            <div className="space-y-6">
-              {/* Phone */}
-              <div className="flex items-center space-x-4">
-                <i className="text-yellow-500 fas fa-phone-alt text-2xl"></i>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-700">Phone</h3>
-                  <p className="text-gray-600">1 (819) 425-9324</p>
-                </div>
-              </div>
-
-              {/* Address */}
-              <div className="flex items-center space-x-4">
-                <i className="text-yellow-500 fas fa-map-marker-alt text-2xl"></i>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-700">Address</h3>
-                  <p className="text-gray-600">
-                  500 Terry Francine St. <br />
-                  San Francisco, CA 94158, <br />
-                USA
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Column 2 */}
-            <div className="space-y-6">
-              {/* Email */}
-              <div className="flex items-center space-x-4">
-                <i className="text-yellow-500 fas fa-envelope text-2xl"></i>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-700">E-mail</h3>
-                  <p className="text-gray-600">ssacademy@strictlystocks.info</p>
-                </div>
-              </div>
-
-              {/* Hours */}
-              <div className="flex items-center space-x-4">
-                <i className="text-yellow-500 fas fa-clock text-2xl"></i>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-700">Hours</h3>
-                  <p className="text-gray-600">
-                    Mon - Fri: 8am – 8pm <br />
-                    Sat: 9am – 7pm <br />
-                    Sun: 9am – 9pm
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
+    <section  className=" py-16 lg:pt-0 pt-5 w-full  bg-gray-100">
+      <div className="max-w-7xl lg:max-w-full w-full mx-auto ">
           {/* Right Section: Map */}
           <div className="relative">
             <iframe
@@ -75,7 +18,6 @@ const ContactUs =()=> {
             ></iframe>
           </div>
         </div>
-      </div>
     </section>
   );
 };
