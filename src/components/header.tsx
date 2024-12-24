@@ -8,6 +8,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const currentPath = location.pathname;
   const [cartCount, setCartCount] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -92,17 +93,19 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
         </button>
         <ul className="flex flex-col text-xl mt-5 items-center p-6 space-y-4">
           <Link to="/" onClick={() => setIsMenuOpen(false)}>
-            <li className="cursor-pointer hover:text-white">Home</li>
+            <li className="cursor-pointer hover:text-white" >Home</li>
           </Link>
+          <Link to="/courses">
           <li
             className="cursor-pointer hover:text-white"
-            onClick={() => {
-              onScrollTo?.("courses");
-              setIsMenuOpen(false);
-            }}
+            // onClick={() => {
+            //   onScrollTo?.("courses");
+            //   setIsMenuOpen(false);
+            // }}
           >
             Courses
           </li>
+          </Link>
           <li className="cursor-pointer hover:text-white"
           onClick={() => {
             onScrollTo?.("about");
@@ -124,12 +127,10 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center gap-7 text-googleBlue-500 text-lg font-medium">
         <ul className="flex">
-          <Link to="/">
-            <li className="mx-4 cursor-pointer hover:text-black">Home</li>
-          </Link>
+            <li className="mx-4 cursor-pointer hover:text-black" onClick={()=> navigate('/')}>Home</li>
           <li
             className="mx-4 cursor-pointer hover:text-black"
-            onClick={() => onScrollTo?.("courses")}
+            onClick={() => navigate('/courses')}
           >
             Courses
           </li>

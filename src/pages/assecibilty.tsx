@@ -5,7 +5,7 @@ const Assecibilty = () => {
         <><Header />
         <div>
 
-            <div className="p-4 text-start">
+            <div className="p-4 text-start mt-24">
                 <h1 className="text-2xl font-bold mb-4">ACCESSIBILITY STATEMENT</h1>
                 <p className="mb-4">
                     Strictly Stocks is committed to ensuring that our website is accessible to people with disabilities. We are continuously working to enhance the accessibility and usability of our website for everyone, including individuals with disabilities. If you have any questions or need assistance with any part of our site, please contact us for support.

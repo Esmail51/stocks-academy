@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from "framer-motion";
+import { Link } from 'react-router-dom';
 
 
 
@@ -11,8 +12,8 @@ const HeroSection: React.FC = () => {
 
 <div className="flex flex-col pt-28 md:flex-row items-center justify-between px-6 md:px-12 lg:px-24 py-12 ">
   {/* Left Section */}
-  <div className="flex-grow max-w-lg text-center md:text-left">
-    <h1 className="lg:text-[76px] md:text-5xl font-medium leading-tight mb-6">
+  <div className="flex-grow max-w-lg text-center md:text-left order-last md:order-none">
+    <h1 className="lg:text-[76px] md:text-5xl text-4xl font-medium leading-tight mb-6">
       Strictly Stocks <br />Academy
     </h1>
     <p className="text-gray-800 text-2xl font-medium mb-3">Preparation meets Profits</p>
@@ -20,18 +21,21 @@ const HeroSection: React.FC = () => {
       Strictly Stocks is an online trading community where traders come together to learn technical analysis tools to become more educated, efficient, and profitable traders.
     </p>
     <div className="flex justify-center md:justify-start space-x-4">
+      <Link to={'courses'}>
       <button className="bg-googleBlue-500 text-white px-6 py-3 rounded-full hover:bg-purple-700 transition">
         Get Started
       </button>
+      
+      </Link>
     </div>
   </div>
 
   {/* Right Section */}
   <motion.div
-    className="flex flex-col md:flex-row items-stretch w-full md:w-[45%] space-x-4 mt-12 md:mt-0"
+    className="hidden md:flex flex-col md:flex-row items-stretch w-full md:w-[50%] space-x-4 mt-12 md:mt-0"
     initial={{ opacity: 0, x: 100 }}
     animate={{ opacity: 1, x: 0 }}
-    transition={{ duration: 1.5, ease: "easeInOut" }} // Transition settings
+    transition={{ duration: 1.5, ease: "easeInOut" }} 
   >
     {/* Left Image with Stats */}
     <div className="flex flex-col w-full">

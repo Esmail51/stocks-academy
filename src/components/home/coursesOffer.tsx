@@ -2,7 +2,7 @@ import React from 'react';
 import img1 from '../../assets/images/stock-market.svg';
 import img3 from '../../assets/images/financial-report.svg';
 import img2 from '../../assets/images/stocks-sell-chart.svg';
-import img4 from '../../assets/images/image-VBPCRMD.jpg';
+import img4 from '../../assets/images/image-X98TA3A.jpg';
 
 export default function CoursesOffer() {
   const courses = [
@@ -28,10 +28,10 @@ export default function CoursesOffer() {
       <div className="container mx-auto flex flex-col lg:flex-row items-start gap-10">
         
         <div className="lg:w-1/2 w-full flex items-center justify-center">
-          <img src={img4} alt="" className='rounded-xl w-full max-h-[730px] object-cover' />
+          <img src={img4} alt="" className='rounded-xl w-full max-h-[670px] object-cover' />
         </div>
 
-        <div className="lg:w-1/2 w-full text-start pt-10 space-y-6">
+        <div className="lg:w-1/2 w-full text-start p-4 space-y-6">
           <h2 className="text-4xl font-bold">Courses We Offer</h2>
           <h3 className="text-xl font-semibold mt-5">Technical Analysis and Understanding the Stock Market</h3>
           <p className="mt-2">A comprehensive 7-hour seminar course in Toronto covering introductory concepts of the North American Equity stock market.</p>

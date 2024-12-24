@@ -13,6 +13,7 @@ import CourseThree from './pages/courses/courseThree';
 import CourseFour from './pages/courses/courseFour';
 import MembershipPage from './pages/membershipPage';
 import ScrollToTop from './components/scrollTop';
+import Courses from './components/home/courses';
 
 function App() {
   
@@ -32,7 +33,8 @@ function App() {
       {path: "/in_depth_technical_analysis_training", element: <CourseTwo/>},
       {path: "/an_introduction_to_options_trading", element: <CourseThree/>},
       {path: "/membership", element: <CourseFour/>},
-      {path:"/choose_plan",element:<MembershipPage/>}
+      {path:"/choose_plan",element:<MembershipPage/>},
+      {path:"/courses",element:<Courses/>}
 
 
 
