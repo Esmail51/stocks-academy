@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import video1 from '../../assets/vedios/strictly.webm'
+import video1 from '../../assets/vedios/Just video with audio.webm'
 
 export default function VideoPlayer() {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -23,16 +23,20 @@ export default function VideoPlayer() {
   return (
     <div
       className="video-container w-full h-full "
-      // onMouseEnter={() => setIsHovered(true)}
-      // onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {/* Video */}
+      <h1 className="lg:hidden lg:text-[76px] md:text-5xl text-4xl font-medium leading-tight mb-6">
+      Strictly Stocks <br />Academy
+    </h1>
       <video
         ref={videoRef}
-        controls={false} // Hide default controls
+        controls={true} // Hide default controls
         width="100%"
-        className="rounded-md h-full object-fill "
+        className="rounded-xl h-[480px] lg:h-full object-cover "
         autoPlay={true}
+        
         loop
         muted
         onPlay={handlePlay}
@@ -44,7 +48,7 @@ export default function VideoPlayer() {
       </video>
 
       {/* Play/Pause Button */}
-      {/* {isHovered && (
+      {isHovered && (
         <button
           onClick={togglePlayPause}
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-purple-500 text-white p-4 rounded-full shadow-lg focus:outline-none"
@@ -83,7 +87,7 @@ export default function VideoPlayer() {
             </svg>
           )}
         </button>
-      )} */}
+      )}
     </div>
   )
 }

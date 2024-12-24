@@ -4,10 +4,10 @@ import img1 from '../../assets/images/Untitled-design-7.png.webp'
 
 export default function heroSection2() {
   return (
-    <section className="relative bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-700 text-white py-16 px-24">
+    <section className="relative bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-700 text-white py-16 lg:px-24 px-4">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-5xl font-medium text-center mb-12">
-          Master the Markets with <span className="text-yellow-400">Strictly Stocks Academy</span>
+          Master the Markets with <span >Strictly Stocks Academy</span>
         </h2>
         <p className="text-lg text-center max-w-3xl mx-auto mb-10">
           Join our comprehensive in-person classes held in a state-of-the-art boardroom

@@ -5,12 +5,12 @@ import Logo from "../assets/images/SS Capital Logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-purple-50 text-black shadow-2xl  shadow-gray-500 py-10">
+    <footer className="bg-blue-50 text-black shadow-2xl  shadow-gray-500 py-10">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 text-start">
           {/* Column 1 */}
           <div>
-            <img src={Logo} alt="Logo" className="w-32 mb-4" />
+            <img src={Logo} alt="Logo" className="w-32 mb-4 " />
             <p className="mt-4 text-sm">
               We are providing high-quality courses..
             </p>

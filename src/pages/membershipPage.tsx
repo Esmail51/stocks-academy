@@ -18,12 +18,12 @@ export default function MembershipPage() {
             <div className='' >
 
                 <section className=' py-12 bg-gray-100'>
-                    <div className='lg:mx-24 mx-5'>
+                    <div className=' flex lg:flex-row flex-col gap-20 lg:mx-24 mx-5'>
 
 
                 <div className='text-black lg:flex lg:flex-col items-center '>
                     <div>
-                        <h1 className='text-4xl font-bold mt-2 mb-10' >Choose the Best Membership Plan</h1>
+                        <h1 className='text-5xl font-md mt-2 mb-10 lg:text-start text-center' >Choose the <br/> Best Membership Plan</h1>
                         {/* <p className='mt-2 mb-10'>This is the Membership Page. You can add any content here.</p> */}
                     </div>
                 </div>
@@ -61,7 +61,7 @@ export default function MembershipPage() {
                 </div>
                 </section>
 
-                <section className='my-10 mt-20 lg:mx-24 mx-5'>
+                <section className='my-10 mt-10 lg:mx-24 mx-5'>
                     <div className='flex flex-col items-center mb-10 '>
                         <h1 className='text-4xl font-bold mb-5'>Community Membership Benefits</h1>
                         <p className='text-lg w-[80%] mb-5' >Membership includes access to a host of resources, all available and accessible from your phone or computer. Currently we are operating on Slack, but transitioning to our own application.</p>

@@ -49,16 +49,16 @@ export default function CoursesOffer() {
             ))}
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-start gap-3 mt-10">
+          <div className="flex lg:flex-row md:flex-row sm:flex-row lg:justify-start justify-center gap-3 mt-10">
             <a
               href="/courses"
-              className="inline-block hover:bg-white hover:text-black font-medium text-medium px-4 py-4 rounded-full shadow-lg bg-[#4285F4] text-white"
+              className="inline-block hover:bg-white hover:text-black font-medium text-sm lg:text-base px-3 py-3 lg:px-4 lg:py-4 rounded-full shadow-lg bg-[#4285F4] text-white"
             >
               Course Packages
             </a>
             <a
               href="/courses"
-              className="inline-block hover:bg-white hover:text-black font-medium text-medium px-4 py-4 rounded-full shadow-lg bg-[#4285F4] text-white"
+              className="inline-block hover:bg-white hover:text-black font-medium text-sm lg:text-base px-3 py-3 lg:px-4 lg:py-4 rounded-full shadow-lg bg-[#4285F4] text-white"
             >
               Membership Packages
             </a>

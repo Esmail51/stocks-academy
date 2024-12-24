@@ -47,7 +47,7 @@ const SliderSection = () => {
       </div>
 
       {/* Horizontal Scrollable Testimonials */}
-      <div className="overflow-x-auto h-[400px] ms-10 me-10" style={{ scrollbarWidth: "none", marginTop: "70px" }}>
+      <div className="overflow-x-auto h-[400px] lg:ms-10 lg:me-10 ms-0 me-0" style={{ scrollbarWidth: "none", marginTop: "70px" }}>
         <div className="flex space-x-6">
           {testimonials.map((testimonial) => (
             <div
@@ -62,7 +62,7 @@ const SliderSection = () => {
               }}>
                 <img decoding="async" src={quoteImage} alt="" />
               </div>
-              <p className="text-gray-600 text-start m-4" style={{ alignItems: "center", fontWeight: 400, fontSize: "13px", lineHeight: 1.9, fontFamily: "'Poppins', sans-serif" }}>
+              <p className="text-gray-600 text-start m-4" style={{ alignItems: "center", fontWeight: 400, fontSize: "13px", lineHeight: 1.9,}}>
                 {testimonial.content}
               </p>
             </div>

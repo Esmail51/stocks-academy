@@ -55,7 +55,7 @@ const Courses = () => {
     <>
       <Header />
       {/* Add padding or margin to avoid overlap */}
-      <section className="py-16">
+      <section className="py-16 ">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-800">
             Affordable Courses, Exceptional Learning
@@ -64,7 +64,7 @@ const Courses = () => {
             Explore our tailored courses to elevate your knowledge and skills.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-4/5 mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-4/5 mx-auto ">
           {academicPackages.map((course) => (
             <div
               key={course.id}

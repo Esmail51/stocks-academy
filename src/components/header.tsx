@@ -69,7 +69,7 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
 
       {/* Sliding Navigation Menu */}
       <div
-        className={`fixed top-0 left-0 h-full w-full bg-purple-100 shadow-md z-50S  transform ${
+        className={`fixed top-0 left-0 h-full w-full bg-purple-100 shadow-md z-50  transform ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 md:hidden`}
       >

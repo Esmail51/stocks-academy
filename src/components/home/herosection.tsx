@@ -39,21 +39,21 @@ const HeroSection: React.FC = () => {
 
   {/* Right Section */}
   <motion.div
-    className="hidden md:flex flex-col md:flex-row items-stretch w-full md:w-[50%] h-[500px] space-x-4 mt-12 md:mt-0"
+    className="md:flex flex-col md:flex-row items-stretch w-full md:w-[50%] h-[500px] space-x-4 md-1 lg:mt-12 md:mt-0"
     initial={{ opacity: 0, x: 100 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ duration: 1.5, ease: "easeInOut" }} 
   >
     {/* Left Image with Stats */}
-    <div className="flex flex-col w-full">
+    {/* <div className="flex flex-col w-full"> */}
       {/* Image */}
-      <div className="relative flex-grow h-full">
+      {/* <div className="relative flex-grow h-full">
         <img
           src="https://templates.sparklethings.com/virtura/wp-content/uploads/sites/31/2024/12/image-ZWV2MLM.jpg"
           alt="Students"
           className="rounded-lg object-cover h-full w-full"
         />
-      </div>
+      </div> */}
       {/* Stats */}
       {/* <div className="flex justify-around border border-purple-500 py-4 mt-4 rounded-lg bg-white">
         <div className="text-center">
@@ -65,7 +65,7 @@ const HeroSection: React.FC = () => {
           <p className="text-gray-600">Courses</p>
         </div>
       </div> */}
-    </div>
+    {/* </div> */}
 
     {/* Right Image */}
     <div className="relative w-full ">
