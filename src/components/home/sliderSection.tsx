@@ -1,5 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import quoteImage from "../../assets/images/ed-quot.png";
+import { FaArrowLeft } from "react-icons/fa6";
+import { FaArrowRight } from "react-icons/fa";
 
 const SliderSection = () => {
   const testimonials = [
@@ -128,7 +130,7 @@ const SliderSection = () => {
             isAtStart ? "hidden" : ""
           }`} style={{top:"125px"}}
         >
-          &lt;
+          <FaArrowLeft />
         </button>
         <button
           onClick={scrollRight}
@@ -136,7 +138,7 @@ const SliderSection = () => {
             isAtEnd ? "hidden" : ""
           }`} style={{top:"125px"}}
         >
-          &gt;
+          <FaArrowRight />
         </button>
       </div>
     </div>

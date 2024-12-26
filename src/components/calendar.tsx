@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import axios from 'axios';
 import { getAllClasses } from '../services/classes';
+import { gapi } from 'gapi-script';
 
 interface Class {
   _id: string;
@@ -53,6 +53,46 @@ const ClassCalendar: React.FC = () => {
   const closeModal = () => {
     setSelectedClass(null);
   };
+  const addEventToGoogleCalendar = (cls: Class) => {
+    const CLIENT_ID = '701095227141-0hvol8du75cd0qnbkgjsigpusoau6kh8.apps.googleusercontent.com';
+    const API_KEY = 'AIzaSyC-ehL5MIHKNcNHH2J_8kIkvI9tfTn9X_E';
+    const SCOPES = 'https://www.googleapis.com/auth/calendar.events';
+  
+    const startDate = new Date(`${cls.date}T${cls.startTime}`);
+    const endDate = new Date(`${cls.date}T${cls.endTime}`);
+  
+    gapi.load('client:auth2', () => {
+      gapi.client.init({
+        apiKey: API_KEY,
+        clientId: CLIENT_ID,
+        discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
+        scope: SCOPES,
+      }).then(() => {
+        gapi.auth2.getAuthInstance().signIn().then(() => {
+          gapi.client.load('calendar', 'v3').then(() => {
+            const event: gapi.client.calendar.Event = {
+              summary: cls.courseName,
+              start: { dateTime: startDate.toISOString() },
+              end: { dateTime: endDate.toISOString() },
+            };
+  
+            gapi.client.calendar.events.insert({
+              calendarId: 'primary',
+              resource: event,
+            }).then(() => {
+              alert('Event added to Google Calendar');
+            }).catch((error: any) => {
+              console.error('Error adding event to calendar:', error);
+            });
+          });
+        }).catch((error: any) => {
+          console.error('Error signing in:', error);
+        });
+      }).catch((error: any) => {
+        console.error('Error initializing gapi client:', error);
+      });
+    });
+  };
 
   return (
     <div>
@@ -77,7 +117,7 @@ const ClassCalendar: React.FC = () => {
               Available Seats: {selectedClass.availableSeats}/{selectedClass.maxSeats}
             </p>
             {selectedClass.availableSeats > 0 ? (
-              <button onClick={() => console.log(`Booking class: ${selectedClass._id}`)}>Book Now</button>
+              <button  className='p-2 text-white bg-googleBlue-500' onClick={() => addEventToGoogleCalendar(selectedClass)}>Book Now</button>
             ) : (
               <p>Fully Booked</p>
             )}

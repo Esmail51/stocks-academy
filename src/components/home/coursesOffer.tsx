@@ -34,7 +34,7 @@ export default function CoursesOffer() {
           <img src={img4} alt="" className='rounded-xl w-full max-h-[500px] object-cover' />
         </div>
 
-        <div className="lg:w-1/2 w-full text-start p-4 flex-col justify-between">
+        <div className="lg:w-1/2 w-full flex text-start p-4 flex-col justify-between">
          
 
           <div className="flex flex-col gap-4 justify-around">
@@ -49,16 +49,16 @@ export default function CoursesOffer() {
             ))}
           </div>
 
-          <div className="flex lg:flex-row md:flex-row sm:flex-row lg:justify-start justify-center gap-3 mt-10">
+          <div className="flex lg:flex-row md:flex-row sm:flex-row lg:justify-start justify-center gap-3 ">
             <a
               href="/courses"
-              className="inline-block hover:bg-white hover:text-black font-medium text-sm lg:text-base px-3 py-3 lg:px-4 lg:py-4 rounded-full shadow-lg bg-[#4285F4] text-white"
+              className="inline-block hover:bg-white hover:text-black font-medium text-sm lg:text-base px-2 py-2 lg:px-4 lg:py-3 rounded-full shadow-lg bg-[#4285F4] text-white"
             >
               Course Packages
             </a>
             <a
               href="/courses"
-              className="inline-block hover:bg-white hover:text-black font-medium text-sm lg:text-base px-3 py-3 lg:px-4 lg:py-4 rounded-full shadow-lg bg-[#4285F4] text-white"
+              className="inline-block hover:bg-white hover:text-black font-medium text-sm lg:text-base px-2 py-2 lg:px-4 lg:py-3 rounded-full shadow-lg bg-[#4285F4] text-white"
             >
               Membership Packages
             </a>

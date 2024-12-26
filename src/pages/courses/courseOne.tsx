@@ -1,14 +1,40 @@
-import React from 'react'
-import Header from '../../components/header'
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 import img1 from '../../assets/images/Classroom3 .jpeg';
+import Header from '../../components/header';
 import ScrollToTop from '../../components/scrollTop';
+import PaymentForm from '../../components/stripeForm';
+import { useState } from 'react';
+import ClassCalendar from '../../components/calendar';
+import SlotCalendar from '../../components/slotCalendar';
+import CourseCalendar from '../../components/slotCalendar';
 
 
 export default function CourseOne() {
+  const navigate = useNavigate();
+  const [showCalendar, setShowCalender] = useState(false);
+
+  const closeCalendar = () =>{
+    setShowCalender(false);
+  }
+
+  const handleEntrollButton = () => {
+    const userDetails = Cookies.get('userDetails')
+    if (!userDetails) {
+      navigate('/login');
+    } else {
+      console.log("Logged in");
+      setShowCalender(true);
+    }
+    navigate('/stripe');
+    
+  }
   return (
     <div className='' >
       <Header></Header>
       <ScrollToTop />
+    
+      
 
       <section className=' container py-12 px-4 md:px-16 lg:px-24'>
         <div>
@@ -48,14 +74,16 @@ export default function CourseOne() {
                   <div>
                     <p className='font-semibold'>Price: $399.00 + Tax </p>
                   </div>
-                  <button className="inline-block bg-blue-600 text-white font-semibold text-sm px-3 py-2 mt-2 rounded-lg shadow-lg  hover:bg-purple-100 hover:text-black transition">Course Enrollment</button>
+                  <button className="inline-block bg-blue-600 text-white font-semibold text-sm px-3 py-2 mt-2 rounded-lg shadow-lg hover:bg-purple-100 hover:text-black transition"
+                    onClick={handleEntrollButton}>
+                    Course Enrollment</button>
                 </div>
 
 
               </div>
             </div>
           </div>
-
+          {showCalendar ? <CourseCalendar courseId='course1' onClose={closeCalendar} /> : null}
 
         </div>
 

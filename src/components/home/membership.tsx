@@ -13,7 +13,7 @@ export default function Membership() {
                     <h1 className='text-4xl font-semibold' >Membership plans</h1>
                     <p className='' >Membership includes access to our online trading community & live technical analysis classes held in our spacious state-of-the-art boardroom, in Toronto, Ontario. We offer a free month membership to members who enroll and complete any Course Package.</p>
                     <Link to='/choose_plan' >
-                        <button className='bg-googleBlue-500 py-2 hover:bg-purple-100 hover:text-black' >Choose Plan</button>
+                        <button className='bg-googleBlue-500 hover:bg-white hover:text-black font-medium text-sm lg:text-base px-3 lg:px-4 lg:py-2 rounded-full shadow-lg bg-[#4285F4] text-white' >Choose Plan</button>
                     </Link>
                 </div>
             </div>
