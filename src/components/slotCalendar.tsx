@@ -1,44 +1,84 @@
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import { IoMdClose } from "react-icons/io";
+import { FaCalendarAlt, FaClock, FaTag } from "react-icons/fa"; // Import icons for each card
+import { useNavigate } from "react-router-dom";
+import { getAllClasses } from "../services/classes";
+import { ThreeDots } from 'react-loader-spinner';
 
 interface CalendarProps {
     courseId: string;
     onClose: () => void;
 }
 
-const CourseCalendar: React.FC<CalendarProps> = ({ courseId, onClose }) => {
-    const courses = [
-        {
-            id: "course1",
-            name: "Technical Analysis and Stock Market",
-            availableDates: [
-                { date: "2024-12-05", price: 399, slots: 6 },
-                { date: "2024-12-29", price: 399, slots: 6 },
-                { date: "2025-01-03", price: 399, slots: 6 },
-            ],
-        },
-        {
-            id: "course2",
-            name: "In-Depth Technical Analysis Training",
-            availableDates: [
-                { date: "2024-12-30", price: 249.00, slots: 10 },
-                { date: "2025-01-05", price: 249.00, slots: 10 },
-                { date: "2025-01-10", price: 249.00, slots: 10 },
-            ],
-        },
-        {
-            id: "course3",
-            name: "An Introduction to Options Trading",
-            availableDates: [
-                { date: "2025-01-02", price: 399, slots: 8 },
-                { date: "2025-01-09", price: 399, slots: 8 },
-                { date: "2025-01-15", price: 399, slots: 8 },
-            ],
-        },
-    ];
+interface CourseDate {
+    date: string;
+    statTime: string;
+    endTime: string;
+    price: number;
+    slots: number;
+}
 
-    const course = courses.find((c) => c.id === courseId);
+interface Course {
+    id: string;
+    courseId: string;
+    name: string;
+    type: string;
+    availableDates: CourseDate[];
+}
+
+const CourseCalendar: React.FC<CalendarProps> = ({ courseId, onClose }) => {
+    const navigate = useNavigate();
+    const [courses, setCourses] = useState<Course[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    const fetchClasses = async () => {
+        const response = await getAllClasses(1, 1, "");
+        const transformedCourses: Course[] = transformCourseData(response.classes);
+        console.log(transformedCourses);
+        setCourses(transformedCourses);
+        setLoading(false); // Set loading to false after data is fetched
+    };
+
+    const transformCourseData = (data: any[]): Course[] => {
+        return data.reduce((acc: Course[], course) => {
+            const courseExists = acc.find((c) => c.type === course.type);
+            const formattedDate = new Date(course.date).toISOString().split('T')[0];
+            if (courseExists) {
+                courseExists.availableDates.push({
+                    date: formattedDate,
+                    statTime: course.startTime,
+                    endTime: course.endTime,
+                    price: 399,
+                    slots: course.availableSeats,
+                });
+            } else {
+                acc.push({
+                    id: `course${acc.length + 1}`,
+                    courseId: course._id,
+                    name: course.courseName,
+                    type: course.type,
+                    availableDates: [
+                        {
+                            date: formattedDate,
+                            statTime: course.startTime,
+                            endTime: course.endTime,
+                            price: 399,
+                            slots: course.availableSeats,
+                        },
+                    ],
+                });
+            }
+            return acc;
+        }, []);  
+    };
+
+    useEffect(() => {
+        fetchClasses();
+    }, []);
+
+    console.log('courses:', courses);
+    const course = courses.find((c: Course) => c.type === courseId);
 
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [showModal, setShowModal] = useState(false);
@@ -53,7 +93,7 @@ const CourseCalendar: React.FC<CalendarProps> = ({ courseId, onClose }) => {
             setActiveStartDate(firstAvailableDate);
             setShowModal(true);
         }
-    }, []);
+    }, [course]);
 
     const formatDateToLocal = (date: Date) => {
         return date.toLocaleDateString("en-CA");
@@ -61,12 +101,10 @@ const CourseCalendar: React.FC<CalendarProps> = ({ courseId, onClose }) => {
 
     const handleDateClick = (date: Date) => {
         const formattedDate = formatDateToLocal(date);
-
         if (course) {
             const selectedCourseDate = course.availableDates.find(
                 (item) => item.date === formattedDate
             );
-
             if (selectedCourseDate) {
                 setModalDetails(selectedCourseDate);
                 setSelectedDate(date);
@@ -77,43 +115,61 @@ const CourseCalendar: React.FC<CalendarProps> = ({ courseId, onClose }) => {
 
     const handleTileClassName = ({ date, view }: any) => {
         if (view !== "month" || !course) return "";
-
         const formattedDate = formatDateToLocal(date);
         const isAvailable = course.availableDates.some((item) => item.date === formattedDate);
-
         return isAvailable
-            ? "bg-googleBlue-500 text-white font-bold rounded-full mb-1"
+            ? "bg-googleBlue-500 text-white font-bold rounded-full max-w-10 max-h-10 flex justify-center items-center mx-3"
             : "text-black";
     };
 
     const handlePayment = () => {
-        console.log("Make payment button");
+            console.log("Payment for course:", course);
+    if (course) {
+        navigate('/stripe', { state: { date: selectedDate, courseId: course.courseId, price: modalDetails.price } });
+    }
     };
 
-    // Function to handle active date change for navigating months
     const handleActiveDateChange = ({ activeStartDate }: any) => {
         setActiveStartDate(activeStartDate);
     };
 
     return (
         <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50 z-50 p-4 sm:p-0">
-            <div className={`flex flex-col sm:flex-row w-full bg-white shadow-md rounded-lg p-6 relative ${showModal ? 'max-w-3xl' : 'max-w-md'}`}>
-                {/* Calendar and Course Details container */}
+            <div className={`flex flex-col sm:flex-row w-full bg-[#4285F4] shadow-md rounded-lg p-6 relative ${showModal ? 'max-w-4xl' : 'max-w-md'}`}>
                 <div className="flex-1">
-                    {/* Calendar */}
-                    {course ? (
+                    {loading ? (
+                        <div className="flex justify-center items-center">
+                            <ThreeDots
+                                visible={true}
+                                height="80"
+                                width="80"
+                                color="white"
+                                radius="9"
+                                ariaLabel="three-dots-loading"
+                                wrapperStyle={{}}
+                                wrapperClass=""
+                            />
+                        </div>
+                    ) : course ? (
                         <>
-                            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+                            <h2 className="text-2xl font-semibold text-white mb-4">
                                 {course.name}
                             </h2>
                             <style>
                                 {`
+                                    .react-calendar {
+                                        height: 380px; /* Adjust this value as needed */
+                                        overflow-y: auto; /* Allow scrolling if the content overflows */
+                                         border-radius: 10px;
+                                    }
                                     .react-calendar abbr {
                                         text-decoration: none;
                                     }
                                     .react-calendar__navigation button {
-                                        color: black;  /* Change navigation icon color (previous & next buttons) */
+                                        color: black;
+                                        font-size: 1.2em;
                                     }
+                                        
                                 `}
                             </style>
                             <Calendar
@@ -129,32 +185,38 @@ const CourseCalendar: React.FC<CalendarProps> = ({ courseId, onClose }) => {
                         <p className="text-red-500">Error: Course not found!</p>
                     )}
                 </div>
-
-                {/* Course Details */}
                 {showModal && modalDetails && (
-                    <div className="mt-4 sm:mt-0 sm:ml-4 flex flex-col justify-center w-full sm:w-80">
-                        <div className="bg-white p-6 rounded-lg shadow-lg">
-                            <h3 className="text-lg font-semibold mb-4">Course Details</h3>
-                            <p className="mb-2">
-                                <strong>Date:</strong> {modalDetails.date}
-                            </p>
-                            <p className="mb-2">
-                                <strong>Price:</strong> ${modalDetails.price}
-                            </p>
-                            <p className="mb-4">
-                                <strong>Slots Available:</strong> {modalDetails.slots}
-                            </p>
+                    <div className="mt-4 sm:mt-0 sm:ml-4 flex flex-col justify-center w-full sm:w-80 ">
+                        <div className="p-6 border bg-white shadow-lg h-full mt-12" style={{ borderRadius: '10px' }}>
+                            <h3 className="text-xl font-bold mb-4">Course Details</h3>
+                            <div className="mb-4 flex items-center space-x-4">
+                                <FaCalendarAlt className="text-blue-500" size={24} />
+                                <div>
+                                    <p><strong>Date:</strong> {modalDetails.date}</p>
+                                    <p><strong>Time:</strong> {modalDetails.statTime} - {modalDetails.endTime}</p>
+                                </div>
+                            </div>
+                            <div className="mb-4 flex items-center space-x-4">
+                                <FaTag className="text-green-500" size={24} />
+                                <div>
+                                    <p><strong>Price:</strong> ${modalDetails.price}</p>
+                                </div>
+                            </div>
+                            <div className="mb-4 flex items-center space-x-4">
+                                <FaClock className="text-orange-500" size={24} />
+                                <div>
+                                    <p><strong>Slots Available:</strong> {modalDetails.slots}</p>
+                                </div>
+                            </div>
                             <button
                                 onClick={handlePayment}
-                                className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-500"
+                                className="w-full border bg-[#4285F4] text-white py-2 rounded-lg hover:bg-white hover:text-black"
                             >
                                 Make Payment
                             </button>
                         </div>
                     </div>
                 )}
-
-                {/* Close button */}
                 <button
                     onClick={onClose}
                     className="absolute top-2 right-2 p-2 text-gray-600 hover:text-gray-900"

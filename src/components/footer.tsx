@@ -14,22 +14,22 @@ const Footer = () => {
             <p className="mt-4 text-sm">
               We are providing high-quality courses..
             </p>
-            <div className="flex mt-4 space-x-4">
+            {/* <div className="flex mt-4 space-x-4">
               <a href="#" className="hover:text-gray-400">Fb.</a>
               <a href="#" className="hover:text-gray-400">Ig.</a>
               <a href="#" className="hover:text-gray-400">Tw.</a>
               <a href="#" className="hover:text-gray-400">Be.</a>
-            </div>
+            </div> */}
           </div>
 
           {/* Column 2 */}
           <div>
             <h3 className="text-lg font-semibold text-white">Popular courses</h3>
             <ul className="mt-4 space-y-2">
-              <li><a href="#" className="hover:text-gray-400">Introduction to Technical Analysis and <br />Understanding the Stock Market</a></li>
-              <li><a href="#" className="hover:text-gray-400">In-Depth Technical Analysis Training</a></li>
+              <li><a href="/intro_to_technical_analysis_and_understanding" className="hover:text-gray-400">Introduction to Technical Analysis and <br />Understanding the Stock Market</a></li>
+              <li><a href="/in_depth_technical_analysis_training" className="hover:text-gray-400">In-Depth Technical Analysis Training</a></li>
               {/* <li><a href="#" className="hover:text-gray-400">Membership</a></li> */}
-              <li><a href="#" className="hover:text-gray-400">Options 101: An Introduction to Options Trading</a></li>
+              <li><a href="/an_introduction_to_options_trading" className="hover:text-gray-400">Options 101: An Introduction to Options Trading</a></li>
             </ul>
           </div>
 

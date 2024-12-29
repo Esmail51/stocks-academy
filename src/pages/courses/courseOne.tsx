@@ -26,7 +26,6 @@ export default function CourseOne() {
       console.log("Logged in");
       setShowCalender(true);
     }
-    navigate('/stripe');
     
   }
   return (
@@ -83,7 +82,7 @@ export default function CourseOne() {
               </div>
             </div>
           </div>
-          {showCalendar ? <CourseCalendar courseId='course1' onClose={closeCalendar} /> : null}
+          {showCalendar ? <CourseCalendar courseId='intro' onClose={closeCalendar} /> : null}
 
         </div>
 

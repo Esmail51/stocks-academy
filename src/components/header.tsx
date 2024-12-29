@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../assets/images/SS Capital Logo.png";
 import { useNavigate, matchPath, useLocation, Link } from "react-router-dom";
+import Cookies from 'js-cookie';
+import { FiLogOut, FiUserCheck  } from 'react-icons/fi';  // Add Sign-out icon from react-icons
 
 interface HeaderProps {
   onScrollTo?: (section: string) => void; // Optional prop
@@ -12,8 +14,9 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
   const currentPath = location.pathname;
   const [cartCount, setCartCount] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userDetails, setUserDetails] = useState<any>({});
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false); // Track profile menu visibility
 
   const propertyPaths = [
     "/terms",
@@ -25,6 +28,34 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
     "/membership",
     "/contact"
   ];
+
+  const getLoginDetails = () => {
+    const userDetailsString = Cookies.get('userDetails') || '{}';
+    const userDetails = JSON.parse(userDetailsString);
+    if (userDetails && userDetails.photoUrl) {
+      setIsLoggedIn(true);
+      setUserDetails(userDetails);
+      console.log("Photo URL:", userDetails);
+    } else {
+      setIsLoggedIn(false);
+      setUserDetails({});
+    }
+  };
+
+  const handleSignOut = () => {
+    // Clear cookies and reset states
+    Cookies.remove('userDetails');
+    Cookies.remove('refreshToken');
+    Cookies.remove('accessToken');
+    setIsLoggedIn(false);
+    setUserDetails({});
+    navigate('/');  // Redirect to login page
+  };
+
+  useEffect(() => {
+    getLoginDetails();
+  }, []);
+
   const isStaticPath = propertyPaths.includes(currentPath);
   const isDynamicPath =
     matchPath("/property/:id", currentPath) ||
@@ -35,12 +66,11 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
 
   return (
     <header
-  className={`top-0 left-0 w-full flex justify-between md:px-16 lg:px-24 px-5 items-center z-20 ${
-    isPropertyPage
-      ? "bg-white shadow-gray-300 shadow-md"
-      : "bg-white shadow-md"
-  }`}
->
+      className={`top-0 left-0 w-full flex justify-between md:px-16 lg:px-24 px-5 items-center z-20 ${isPropertyPage
+        ? "bg-white shadow-gray-300 shadow-md"
+        : "bg-white shadow-md"
+        }`}
+    >
       {/* Logo */}
       <div className="header__logo">
         <img src={Logo} alt="SS Capital Logo" className="h-24" />
@@ -69,9 +99,8 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
 
       {/* Sliding Navigation Menu */}
       <div
-        className={`fixed top-0 left-0 h-full w-full bg-purple-100 shadow-md z-50  transform ${
-          isMenuOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-300 md:hidden`}
+        className={`fixed top-0 left-0 h-full w-full bg-purple-100 shadow-md z-50 transform ${isMenuOpen ? "translate-x-0" : "-translate-x-full"
+          } transition-transform duration-300 md:hidden`}
       >
         <button
           className="text-white p-2 bg-purple-500 focus:outline-none absolute top-4 right-4"
@@ -94,32 +123,35 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
         </button>
         <ul className="flex flex-col text-xl mt-5 items-center p-6 space-y-4">
           <Link to="/" onClick={() => setIsMenuOpen(false)}>
-            <li className="cursor-pointer hover:text-white" >Home</li>
+            <li className="cursor-pointer hover:text-white">Home</li>
           </Link>
           <Link to="/courses">
+            <li className="cursor-pointer hover:text-white">Courses</li>
+          </Link>
           <li
             className="cursor-pointer hover:text-white"
-            // onClick={() => {
-            //   onScrollTo?.("courses");
-            //   setIsMenuOpen(false);
-            // }}
-          >
-            Courses
-          </li>
-          </Link>
-          <li className="cursor-pointer hover:text-white"
-          onClick={() => {
-            navigate('/choose_plan')
-            setIsMenuOpen(false);
-          }}
+            onClick={() => {
+              navigate('/choose_plan');
+              setIsMenuOpen(false);
+            }}
           >Membership</li>
           <li
             className="cursor-pointer hover:text-white"
             onClick={() => {
-              navigate('/contact')
+              navigate('/contact');
             }}
           >
             Contact
+          </li>
+          <li>
+            <div className="flex gap-3">
+              <button
+                className="py-2 px-3 border-black border rounded-full text-black hover:border-white hover:text-white"
+                onClick={() => navigate('/login')}
+              >
+                <p>Sign up</p>
+              </button>
+            </div>
           </li>
         </ul>
       </div>
@@ -127,7 +159,7 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center gap-7 text-googleBlue-500 text-lg font-medium">
         <ul className="flex">
-            <li className="mx-4 cursor-pointer hover:text-black" onClick={()=> navigate('/')}>Home</li>
+          <li className="mx-4 cursor-pointer hover:text-black" onClick={() => navigate('/')}>Home</li>
           <li
             className="mx-4 cursor-pointer hover:text-black"
             onClick={() => navigate('/courses')}
@@ -135,7 +167,7 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
             Courses
           </li>
           <li className="mx-4 cursor-pointer hover:text-black"
-          onClick={() => navigate('/choose_plan')}
+            onClick={() => navigate('/choose_plan')}
           >Membership</li>
           <li
             className="mx-4 cursor-pointer hover:text-black"
@@ -147,11 +179,44 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
           </li>
         </ul>
 
-        {/* <div className="flex gap-3">
-          <button className="py-2 px-3 border-googleBlue-500 border rounded-full text-googleBlue-500"><p>Login</p></button>
-          <button className="py-2 px-3 bg-googleBlue-500 rounded-full"><p>Sign Up</p></button>
-
-        </div> */}
+        {/* Show User Avatar or Sign-Up button */}
+        <div className="flex gap-3 relative">
+          {isLoggedIn ? (
+            <div className="relative">
+              {/* Avatar Image */}
+              <img
+                src={userDetails.photoUrl}
+                alt="User Avatar"
+                className="rounded-full w-10 h-10 cursor-pointer"
+                onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)} // Toggle profile menu
+                onError={(e) => {
+                  console.error("Image failed to load:", userDetails.photoUrl);
+                }}
+              />
+              {/* Profile Dropdown */}
+              {isProfileMenuOpen && (
+                <div className="absolute z-10 right-0 top-12 bg-white shadow-lg rounded-lg p-2 w-32">
+                  <div className="flex items-center space-x-2 p-2 cursor-pointer">
+                  <FiUserCheck />
+                    <p className="text-[#4285F4] text-sm">{userDetails.displayName}</p>
+                  </div>
+                  <hr/>
+                  <div className="flex items-center space-x-2 p-2 hover:bg-gray-200 text-sm cursor-pointer" onClick={handleSignOut}>
+                    <FiLogOut style={{color:"red"}} />
+                    <p style={{color:"red"}}>Sign out</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <button
+              className="py-2 px-3 border-googleBlue-500 border rounded-full text-googleBlue-500"
+              onClick={() => navigate('/login')}
+            >
+              <p>Sign in</p>
+            </button>
+          )}
+        </div>
       </nav>
     </header>
   );

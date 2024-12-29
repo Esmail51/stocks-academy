@@ -17,7 +17,7 @@ const LoginMain = () => {
     const [errors, setErrors] = useState({ email: '', password: '' });
 
     //used for changing from sign in to login
-    const [changeAuth, setChangeAuth] = useState(false);;
+    const [changeAuth, setChangeAuth] = useState(true);;
     const navigate = useNavigate()
 
     const validateForm = () => {
@@ -58,7 +58,6 @@ const LoginMain = () => {
         const provider = new GoogleAuthProvider();
         try {
             const result:any = await signInWithPopup(auth, provider);
-            console.log('User Info:', result.user);
             // localStorage.setItem('accessToken',result.user.accessToken)
             // localStorage.setItem('refreshToken',result.user.stsTokenManager.refreshToken)
             // localStorage.setItem('userDetails', JSON.stringify(result.user.reloadUserInfo))

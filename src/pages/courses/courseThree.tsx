@@ -76,7 +76,7 @@ export default function CourseThree() {
             </div>
           </div>
 
-          {showCalendar ? <CourseCalendar courseId='course3' onClose={closeCalendar} /> : null}
+          {showCalendar ? <CourseCalendar courseId='options' onClose={closeCalendar} /> : null}
         </div>
 
 
