@@ -52,6 +52,19 @@ export default function CourseOne() {
 
             </div>
             <div className='lg:w-1/2 w-full text-start'>
+            <div className='mb-6 pt-2'>
+                <h3 className='text-xl font-semibold text-start text-gray-900'>Booking Details</h3>
+                <div className=' text-start  text-gray-700'>
+                  <div>
+                    <p className='font-semibold'>Price: $ 399.00<span className='font-semibold text-xs'>+Tax</span></p>
+                  </div>
+                  <button className="inline-block bg-blue-600 text-white font-semibold text-sm px-3 py-2 mt-2 rounded-lg shadow-lg hover:bg-purple-100 hover:text-black transition"
+                    onClick={handleEntrollButton}>
+                    Course Enrollment</button>
+                </div>
+
+
+              </div>
               <div>
                 <h3 className='text-xl font-semibold text-gray-900 mb-4 text-start'>Learn by communicating and discussing around a boardroom table</h3>
                 <div>
@@ -67,19 +80,7 @@ export default function CourseOne() {
                 <p className='pb-2'>We believe in teaching you to use tools that will allow you to become a more informed, effective, and profitable investor and/or trader. </p>
                 <p>This Introduction Courts provides students with working knowledge of basic technical analysis skills including charting, understanding and applying indicators into analysis, a review on historic market timelines and reviewing price patterns throughout market history and historic market liquidity events</p>
               </div>
-              <div className=''>
-                <h2 className='text-xl font-semibold text-start text-gray-900   my-4'>Booking Details</h2>
-                <div className=' text-start  text-gray-700'>
-                  <div>
-                    <p className='font-semibold'>Price: $399.00 + Tax </p>
-                  </div>
-                  <button className="inline-block bg-blue-600 text-white font-semibold text-sm px-3 py-2 mt-2 rounded-lg shadow-lg hover:bg-purple-100 hover:text-black transition"
-                    onClick={handleEntrollButton}>
-                    Course Enrollment</button>
-                </div>
-
-
-              </div>
+              
             </div>
           </div>
           {showCalendar ? <CourseCalendar courseId='intro' onClose={closeCalendar} /> : null}

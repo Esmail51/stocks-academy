@@ -75,7 +75,6 @@ const SliderSection = () => {
     <div className="relative mx-auto px-6 bg-gray-50">
       {/* Section Heading */}
       <div className="text-center mb-10 pt-10">
-        <p className="text-[#4285F4] text-xl font-thin">Testimonial</p>
         <h4 className="text-4xl font-bold text-gray-800 mt-5">
           Creating A Community Of Life Long Learners.
         </h4>

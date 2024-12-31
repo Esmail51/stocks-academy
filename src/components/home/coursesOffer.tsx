@@ -37,7 +37,7 @@ export default function CoursesOffer() {
         <div className="lg:w-1/2 w-full flex text-start p-4 flex-col justify-between">
          
 
-          <div className="flex flex-col gap-4 justify-around">
+          <div className="flex flex-col gap-4 justify-around mt-8">
             {courses.map((course, index) => (
               <div key={index} className="flex items-start gap-4">
                 <img src={course.image} alt="" className="w-12 h-12 object-cover" />
@@ -52,13 +52,13 @@ export default function CoursesOffer() {
           <div className="flex lg:flex-row md:flex-row sm:flex-row lg:justify-start justify-center gap-3 ">
             <a
               href="/courses"
-              className="inline-block hover:bg-white hover:text-black font-medium text-sm lg:text-base px-2 py-2 lg:px-4 lg:py-3 rounded-full shadow-lg bg-[#4285F4] text-white"
+              className="inline-block text-xs py-2 px-3 hover:bg-white hover:text-black rounded-full shadow-lg bg-[#4285F4] text-white"
             >
               Course Packages
             </a>
             <a
               href="/courses"
-              className="inline-block hover:bg-white hover:text-black font-medium text-sm lg:text-base px-2 py-2 lg:px-4 lg:py-3 rounded-full shadow-lg bg-[#4285F4] text-white"
+              className="inline-block hover:bg-white hover:text-black text-xs py-2 px-3 rounded-full shadow-lg bg-[#4285F4] text-white"
             >
               Membership Packages
             </a>

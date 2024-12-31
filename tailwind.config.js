@@ -170,7 +170,10 @@ module.exports = {
       },
       screens: {
         'xl2': '1400px',
-      }
+      },
+      animation: {
+        spin: "spin 2s linear infinite",
+      },
       
     }
   },

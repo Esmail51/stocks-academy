@@ -24,7 +24,7 @@ export const createPaymentIntent = async (payload: any) => {
         },
       });
   
-      return response.data; // The response should contain the clientSecret
+      return response.data;
     } catch (error) {
       console.error('Failed to create payment intent:', error);
       throw error;

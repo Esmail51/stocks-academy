@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useStripe, useElements, CardNumberElement, CardExpiryElement, CardCvcElement } from '@stripe/react-stripe-js';
 import { createPaymentIntent } from '../services/payment';
 import { createClass } from '../services/classes';
 import Cookies from 'js-cookie';
 import { useLocation } from 'react-router-dom';
+import BookingDialog from "./bookingDialog";
 
 const PaymentForm: React.FC = () => {
   const location  = useLocation();
@@ -14,9 +15,12 @@ const PaymentForm: React.FC = () => {
   const [cardError, setCardError] = useState<string | null>(null);
   const [cardBrand, setCardBrand] = useState<string | null>(null);
   const { date, courseId} = location.state;
-  console.log('calendarId', date);
-  console.log('courseId', courseId);
-
+  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
+  
+    const openDialog = () => setIsDialogOpen(true);
+    const closeDialog = () => setIsDialogOpen(false);
+  
+  const [userDetails, setUserDetails] = useState<any>({});
 
   const handleCardChange = (event: any) => {
     if (event.brand) {
@@ -28,6 +32,12 @@ const PaymentForm: React.FC = () => {
       setCardError(null);
     }
   };
+
+  useEffect(() => {
+    const userDetailsString = Cookies.get('userDetails') || '{}';
+    const userDetails = JSON.parse(userDetailsString);
+    setUserDetails(userDetails);
+  }, []);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -74,6 +84,7 @@ const PaymentForm: React.FC = () => {
         try{
           const response = await createClass(payload);
           if (response) {
+            openDialog();
             console.log('Class created:', response);
             setError('Payment successful. Class created.');
           }
@@ -98,78 +109,101 @@ const PaymentForm: React.FC = () => {
     mastercard: 'https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg',
     amex: 'https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg',
     discover: 'https://upload.wikimedia.org/wikipedia/commons/5/53/Discover_Card_logo.svg',
-    default: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Credit-Card-Generic.png',
+    default: 'https://t3.ftcdn.net/jpg/05/74/43/12/360_F_574431210_icdpLDlDxAfsNacnV56vIWb4pCRnaNBA.jpg',
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 p-6 bg-white text-gray-800 rounded-lg shadow-md max-w-md mx-auto">
-      <h2 className="text-2xl font-semibold text-gray-800">Payment Information</h2>
+    <>
+    <div className="flex justify-center items-center min-h-screen bg-gray-50">
+        <div className="w-full max-w-4xl h-[400px] bg-white rounded-lg shadow-md p-8 m-4 ">
+          <div className="grid grid-cols-2 gap-6 pt-5">
+            {/* Donation Summary Section */}
+            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
+              <h2 className="text-xl font-semibold text-gray-800 mb-4">Payment Summary</h2>
+              <p className="text-sm text-gray-600">Dear <span className="font-semibold">{userDetails ? userDetails.displayName : "User"}</span>,</p>
+              <div className="mt-4">
+                <div className="flex justify-between text-sm text-gray-700 mt-2">
+                  <span>Course fee:</span>
+                  <span>$399.00</span>
+                </div>
+                <div className="flex justify-between text-sm text-gray-700">
+                  <span>Tax:</span>
+                  <span>$1.00</span>
+                </div>
+                <div className="flex justify-between text-sm font-semibold text-gray-800 mt-4">
+                  <span>Total payment:</span>
+                  <span>$400.00</span>
+                </div>
+              </div>
+            </div>
 
-      {/* Card Number Field */}
-      <div className="relative">
-  {/* Card Number Field */}
-  <label htmlFor="cardNumber" className="text-sm font-medium">
-    Card Number
-  </label>
-  <div className="relative">
-    <CardNumberElement
-      id="cardNumber"
-      className="p-3 border border-gray-600 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500 pr-12"
-      options={{
-        style: {
-          base: {
-            fontSize: '16px',
-            color: '#000',
-            '::placeholder': {
-              color: '#aab7c4',
-            },
-          },
-          invalid: {
-            color: '#ff3860',
-          },
-        },
-      }}
-      onChange={handleCardChange}
-    />
-    {/* Card Brand Icon */}
-    {cardBrand && (
-      <img
-        src={cardBrandIcons[cardBrand] || cardBrandIcons.default}
-        alt={`${cardBrand} icon`}
-        className="absolute right-3 top-1/2 transform -translate-y-1/2 w-8 h-5"
-      />
-    )}
-  </div>
-  {cardError && <p className="text-red-500 text-xs mt-2">{cardError}</p>}
-</div>
+            {/* Payment Information Section */}
+            <div>
+            <BookingDialog isOpen={isDialogOpen} onClose={closeDialog} />
+              <h2 className="text-xl font-semibold text-gray-800 mb-6">Payment Information</h2>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="cardNumber" className="text-sm font-medium">Card Number</label>
+                  <div className="relative">
+                    <CardNumberElement
+                      id="cardNumber"
+                      className="p-3 border border-gray-300 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-purple-500"
+                      options={{
+                        style: {
+                          base: {
+                            fontSize: '16px',
+                            color: '#000',
+                            '::placeholder': {
+                              color: '#aab7c4',
+                            },
+                          },
+                          invalid: {
+                            color: '#ff3860',
+                          },
+                        },
+                      }}
+                      onChange={handleCardChange} />
+                    {/* Card Brand Icon */}
+                    {cardBrand && (
+                      <img
+                        src={cardBrandIcons[cardBrand] || cardBrandIcons.default}
+                        alt={`${cardBrand} icon`}
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 w-8 h-5" />
+                    )}
+                  </div>
+                  {cardError && <p className="text-red-500 text-xs mt-2">{cardError}</p>}
+                </div>
 
-      {/* Card Expiry and CVC Fields */}
-      <div className="flex gap-4">
-        <div className="w-1/2">
-          <label htmlFor="cardExpiry" className="text-sm font-medium">Expiration Date</label>
-          <CardExpiryElement
-            id="cardExpiry"
-            className="p-3 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
-          />
+                <div className="flex gap-4">
+                  <div className="w-1/2">
+                    <label htmlFor="cardExpiry" className="text-sm font-medium">Expiration Date (MM/YY)</label>
+                    <CardExpiryElement
+                      id="cardExpiry"
+                      className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                  </div>
+                  <div className="w-1/2">
+                    <label htmlFor="cardCvc" className="text-sm font-medium">CVV / CVC Code</label>
+                    <CardCvcElement
+                      id="cardCvc"
+                      className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-purple-500 text-white p-3 rounded-md disabled:bg-gray-400"
+                  disabled={!stripe || loading}
+                >
+                  {loading ? 'Processing...' : 'Make Payment'}
+                </button>
+              </form>
+
+              {cardError && <p className="text-red-500 text-sm mt-2">{cardError}</p>}
+              {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+            </div>
+          </div>
         </div>
-        <div className="w-1/2">
-          <label htmlFor="cardCvc" className="text-sm font-medium">Security Code</label>
-          <CardCvcElement
-            id="cardCvc"
-            className="p-3 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-      </div>
-
-      {/* Submit Button */}
-      <button
-        type="submit"
-        className="w-full bg-blue-500 text-white p-3 rounded-md disabled:bg-gray-600"
-        disabled={!stripe || loading}
-      >
-        {loading ? 'Processing...' : 'Pay Now'}
-      </button>
-    </form>
+      </div></>
   );
 };
 

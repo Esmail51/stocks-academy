@@ -195,7 +195,7 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
               />
               {/* Profile Dropdown */}
               {isProfileMenuOpen && (
-                <div className="absolute z-10 right-0 top-12 bg-white shadow-lg rounded-lg p-2 w-32">
+                <div className="absolute z-10 right-0 top-12 bg-white shadow-lg border rounded-lg p-2 w-32">
                   <div className="flex items-center space-x-2 p-2 cursor-pointer">
                   <FiUserCheck />
                     <p className="text-[#4285F4] text-sm">{userDetails.displayName}</p>
