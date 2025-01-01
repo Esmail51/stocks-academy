@@ -31,13 +31,13 @@ export default function CoursesOffer() {
       <div className="container mx-auto flex items-stretch flex-col lg:flex-row gap-3">
         
         <div className="lg:w-1/2 w-full flex items-center justify-center mt-3">
-          <img src={img4} alt="" className='rounded-xl w-full max-h-[500px] object-cover' />
+          <img src={img4} alt="" className='rounded-xl w-full max-h-[430px] object-cover' />
         </div>
 
         <div className="lg:w-1/2 w-full flex text-start p-4 flex-col justify-between">
          
 
-          <div className="flex flex-col gap-4 justify-around mt-8">
+          <div className="flex flex-col gap-4 justify-around">
             {courses.map((course, index) => (
               <div key={index} className="flex items-start gap-4">
                 <img src={course.image} alt="" className="w-12 h-12 object-cover" />
@@ -49,7 +49,7 @@ export default function CoursesOffer() {
             ))}
           </div>
 
-          <div className="flex lg:flex-row md:flex-row sm:flex-row lg:justify-start justify-center gap-3 ">
+          <div className="flex lg:flex-row md:flex-row sm:flex-row lg:justify-start justify-center gap-3 mt-2">
             <a
               href="/courses"
               className="inline-block text-xs py-2 px-3 hover:bg-white hover:text-black rounded-full shadow-lg bg-[#4285F4] text-white"

@@ -90,7 +90,7 @@ const Courses = () => {
               </div>
               <div className="mt-auto">
                 <a href={course.page}>
-                <button className="bg-purple-700 text-white py-2 px-6 rounded-lg hover:bg-purple-800 transition duration-300 w-full">
+                <button className="bg-[#4285F4] text-white py-2 px-6 rounded-lg hover:bg-white hover:text-black hover:border transition duration-300 w-full">
                   Learn More
                 </button>
                 </a>

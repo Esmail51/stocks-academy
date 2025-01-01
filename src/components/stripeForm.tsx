@@ -191,7 +191,7 @@ const PaymentForm: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-purple-500 text-white p-3 rounded-md disabled:bg-gray-400"
+                  className="w-full bg-[#4285F4] text-white p-3 rounded-md disabled:bg-gray-400"
                   disabled={!stripe || loading}
                 >
                   {loading ? 'Processing...' : 'Make Payment'}
