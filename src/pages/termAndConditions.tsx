@@ -4,7 +4,6 @@ import Header from '../components/header';
 const TermsCondition = () => {
     return (
         <>
-        <Header />
         <div className='text-start px-20 py-5 mt-24'>
             <h1 className='text-3xl font-semibold mt-2'>Terms & Conditions</h1>
             <h2 className='text-2xl font-semibold mt-2'>Legal Disclaimer</h2>

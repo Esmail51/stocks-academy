@@ -8,7 +8,7 @@ const Footer = () => {
     <footer className=" text-gray-100   py-10 bg-white shadow-2xl shadow-gray-800" style={{
       
     }}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className=" lg:px-24 mx-auto px-6 ">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 text-start">
           {/* Column 1 */}
           <div className="text-center">
@@ -18,7 +18,7 @@ const Footer = () => {
     className="w-36 mb-4 "
     
   />
-  <p className="mt-4 text-sm text-gray-700">
+  <p className="mt-4 text-sm text-start text-gray-700">
     We are providing high-quality courses..
   </p>
   {/* <div className="flex mt-4 space-x-4 justify-center">
@@ -67,7 +67,7 @@ const Footer = () => {
 
         {/* Footer bottom */}
         <div className="mt-8 border-t text-black border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center text-sm">
-          <p>© 2024 StrictlyStocks</p>
+          <p>© 2025 StrictlyStocks</p>
           <ul className="flex space-x-2 md:space-x-4 mt-4 md:mt-0 ">
             <li><p className="hover:text-googleBlue-500 cursor-pointer" onClick={()=> window.open('/assecibilty', '_blank')}>Accessibility</p></li>
             <li><p className="hover:text-googleBlue-500 cursor-pointer" onClick={()=> window.open('/terms', '_blank')}>Terms & Conditions</p></li>

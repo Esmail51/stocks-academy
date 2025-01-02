@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import img4 from "../../assets/images/Classroom Teaching.avif";
-import img1 from "../../assets/images/Old Classroom Teaching_edited.avif";
+import img1 from "../../assets/images/Classroom3 .jpeg";
 import img2 from "../../assets/images/Quality Classroom Picture 2 .avif";
 import Header from "../header";
 
@@ -53,7 +53,6 @@ const Courses = () => {
       }, []);
   return (
     <>
-      <Header />
       {/* Add padding or margin to avoid overlap */}
       <section className="py-16 ">
         <div className="text-center mb-12">

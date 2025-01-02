@@ -18,20 +18,19 @@ const Home: React.FC = () => {
     const aboutRef = useRef<HTMLDivElement>(null);
 
 
-    const handleScrollTo = (section: string) => {
-        if (section === "contact" && contactRef.current) {
-            contactRef.current.scrollIntoView({ behavior: "smooth" });
-        } else if (section === "courses" && coursesRef.current) {
-            coursesRef.current.scrollIntoView({ behavior: "smooth" });
-        }
-     else if (section === "about" && aboutRef.current) {
-        aboutRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-    };
+    // const handleScrollTo = (section: string) => {
+    //     if (section === "contact" && contactRef.current) {
+    //         contactRef.current.scrollIntoView({ behavior: "smooth" });
+    //     } else if (section === "courses" && coursesRef.current) {
+    //         coursesRef.current.scrollIntoView({ behavior: "smooth" });
+    //     }
+    //  else if (section === "about" && aboutRef.current) {
+    //     aboutRef.current.scrollIntoView({ behavior: "smooth" });
+    // }
+    // };
 
     return (
         <div className="home ">
-            <Header onScrollTo={handleScrollTo} />
             <HeroSection  />
             <HeroSection2 />
             <CoursesOffer />

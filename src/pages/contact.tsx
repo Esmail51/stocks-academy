@@ -26,7 +26,6 @@ const ContactForm: React.FC = () => {
 
   return (
     <div className="w-full ">
-      <Header />
       <div className="lg:px-24 px-5 mt-5 ">
       <h2 className="text-4xl font-medium text-gray-700 mb-10 lg:text-center text-start ">Contact</h2>
 

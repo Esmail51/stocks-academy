@@ -5,7 +5,7 @@ import img2 from '../../src/assets/images/video.png'
 import img3 from '../../src/assets/images/analysis.png'
 import img4 from '../../src/assets/images/seminar.png'
 // import img5 from '../../src/assets/images/rb_2345.png'
-import img5 from '../../src/assets/images/vecteezy_credit-cardbusiness-object-illustration-3d_44027035.webp'
+import img5 from '../../src/assets/images/rb_327.webp'
 
 import ScrollToTop from '../components/scrollTop'
 
@@ -14,7 +14,6 @@ import ScrollToTop from '../components/scrollTop'
 export default function MembershipPage() {
     return (
         <section className='   '>
-            <Header />
             <ScrollToTop />
 
 

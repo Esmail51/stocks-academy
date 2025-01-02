@@ -5,21 +5,22 @@ import { createClass } from '../services/classes';
 import Cookies from 'js-cookie';
 import { useLocation } from 'react-router-dom';
 import BookingDialog from "./bookingDialog";
+import { createEventInCalendar } from '../services/event';
 
 const PaymentForm: React.FC = () => {
-  const location  = useLocation();
+  const location = useLocation();
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [cardError, setCardError] = useState<string | null>(null);
   const [cardBrand, setCardBrand] = useState<string | null>(null);
-  const { date, courseId} = location.state;
+  const { date, courseId } = location.state;
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
-  
-    const openDialog = () => setIsDialogOpen(true);
-    const closeDialog = () => setIsDialogOpen(false);
-  
+
+  const openDialog = () => setIsDialogOpen(true);
+  const closeDialog = () => setIsDialogOpen(false);
+
   const [userDetails, setUserDetails] = useState<any>({});
 
   const handleCardChange = (event: any) => {
@@ -39,6 +40,23 @@ const PaymentForm: React.FC = () => {
     setUserDetails(userDetails);
   }, []);
 
+  const handleCreateEvent =async () => {
+    const eventDetails = {
+      summary: location.state.courseName,
+      description: location.state.courseName,
+      start: {
+        dateTime: location.state.startTime,
+        timeZone: "UTC", // Adjust timezone as needed
+      },
+      end: {
+        dateTime: location.state.endTime,
+        timeZone: "UTC", // Adjust timezone as needed
+      },
+    }
+     await createEventInCalendar(eventDetails);
+    
+  }
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
@@ -50,7 +68,6 @@ const PaymentForm: React.FC = () => {
     setLoading(true);
     setError(null);
     setCardError(null);
-
     const cardNumberElement = elements.getElement(CardNumberElement);
 
     if (!cardNumberElement) {
@@ -61,7 +78,7 @@ const PaymentForm: React.FC = () => {
 
     try {
       const payload = {
-        amount: 5000,
+        amount: location.state?.price + location.state?.tax,
         currency: 'usd',
       }
       const clientSecret = await createPaymentIntent(payload);
@@ -81,21 +98,22 @@ const PaymentForm: React.FC = () => {
           name: JSON.parse(Cookies.get('userDetails') || '{}').displayName,
           classId: courseId,
         }
-        try{
+        try {
           const response = await createClass(payload);
           if (response) {
             openDialog();
             console.log('Class created:', response);
             setError('Payment successful. Class created.');
+            handleCreateEvent();
           }
-        
+
         } catch (err) {
           console.error('Error:', err);
           setError('Failed to initiate payment.');
         }
-        
+
       }
-      
+
     } catch (err) {
       console.error('Error:', err);
       setError('Failed to initiate payment.');
@@ -114,32 +132,32 @@ const PaymentForm: React.FC = () => {
 
   return (
     <>
-    <div className="flex justify-center items-center min-h-screen bg-gray-50">
+      <div className="flex justify-center items-center min-h-screen bg-gray-50">
         <div className="w-full max-w-4xl h-[400px] bg-white rounded-lg shadow-md p-8 m-4 ">
-          <div className="grid grid-cols-2 gap-6 pt-5">
-            {/* Donation Summary Section */}
+          <div className="grid grid-cols-2 gap-6">
+
             <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
               <h2 className="text-xl font-semibold text-gray-800 mb-4">Payment Summary</h2>
               <p className="text-sm text-gray-600">Dear <span className="font-semibold">{userDetails ? userDetails.displayName : "User"}</span>,</p>
               <div className="mt-4">
                 <div className="flex justify-between text-sm text-gray-700 mt-2">
                   <span>Course fee:</span>
-                  <span>$399.00</span>
+                  <span>${location.state?.price}.00</span>
                 </div>
                 <div className="flex justify-between text-sm text-gray-700">
                   <span>Tax:</span>
-                  <span>$1.00</span>
+                  <span>${location.state?.tax}.00</span>
                 </div>
                 <div className="flex justify-between text-sm font-semibold text-gray-800 mt-4">
                   <span>Total payment:</span>
-                  <span>$400.00</span>
+                  <span>${location.state?.price + location.state?.tax}.00</span>
                 </div>
               </div>
             </div>
 
             {/* Payment Information Section */}
             <div>
-            <BookingDialog isOpen={isDialogOpen} onClose={closeDialog} />
+              <BookingDialog isOpen={isDialogOpen} onClose={closeDialog} />
               <h2 className="text-xl font-semibold text-gray-800 mb-6">Payment Information</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>

@@ -6,7 +6,7 @@ import Home from './pages/home';
 import ClassCalendar from './components/calendar';
 import TermsCondition from './pages/termAndConditions';
 import Assecibilty from './pages/assecibilty';
-import LoginMain from './components/login/loginMain';
+// import LoginMain from './components/login/loginMain';
 import CourseOne from './pages/courses/courseOne';
 import CourseTwo from './pages/courses/courseTwo';
 import CourseThree from './pages/courses/courseThree';
@@ -16,10 +16,12 @@ import Courses from './components/home/courses';
 import Register from './components/login/register';
 import StripeProvider from './providers/StripeProvider';
 import PaymentForm from './components/stripeForm';
+import Header from './components/header';
+import LoginMain from './components/login/loginMain';
 
-const MainLayout = () => (
+const MainLayout = ({ onLoginOpen }: { onLoginOpen: () => void }) => (
   <div>
-    {/* we can include header here */}
+    <Header onLoginOpen={onLoginOpen} />
     <main>
       <Outlet />
     </main>
@@ -35,39 +37,56 @@ const NoFooterLayout = () => (
   </div>
 );
 
-const router = createBrowserRouter([
-  // Routes with MainLayout
-  {
-    element: <MainLayout />,
-    children: [
-      { path: "/", element: <Home /> },
-      { path: "/calendar", element: <ClassCalendar /> },
-      { path: "/terms", element: <TermsCondition /> },
-      { path: "/assecibilty", element: <Assecibilty /> },
-      { path: "/intro_to_technical_analysis_and_understanding", element: <CourseOne /> },
-      { path: "/in_depth_technical_analysis_training", element: <CourseTwo /> },
-      { path: "/an_introduction_to_options_trading", element: <CourseThree /> },
-      { path: "/choose_plan", element: <MembershipPage /> },
-      { path: "/courses", element: <Courses /> },
-      { path: "/contact", element: <ContactForm /> },
-    ],
-  },
-  // Routes with NoFooterLayout
-  {
-    element: <NoFooterLayout />,
-    children: [
-      { path: "/login", element: <LoginMain /> },
-      { path: "/register", element: <Register /> },
-      { path: "/stripe", element: <PaymentForm/> },
-    ],
-  },
-]);
 
-function App() {
-  return(
+
+const App = () => {
+  const [loginShow, setLoginShow] = useState(false);
+
+  // Function to open the Login Modal
+  const handleLoginOpen = () => {
+    setLoginShow(true);
+  };
+
+  // Function to close the Login Modal
+  const handleLoginClose = () => {
+    setLoginShow(false);
+  };
+  const router = createBrowserRouter([
+    // Routes with MainLayout
+    {
+      element: <MainLayout onLoginOpen={handleLoginOpen} />,
+      children: [
+        { path: "/", element: <Home /> },
+        { path: "/calendar", element: <ClassCalendar /> },
+        { path: "/terms", element: <TermsCondition /> },
+        { path: "/assecibilty", element: <Assecibilty /> },
+        { path: "/intro_to_technical_analysis_and_understanding", element: <CourseOne onLoginOpen={handleLoginOpen} /> },
+        { path: "/in_depth_technical_analysis_training", element: <CourseTwo onLoginOpen={handleLoginOpen} /> },
+        { path: "/an_introduction_to_options_trading", element: <CourseThree onLoginOpen={handleLoginOpen} /> },
+        { path: "/choose_plan", element: <MembershipPage /> },
+        { path: "/courses", element: <Courses /> },
+        { path: "/contact", element: <ContactForm /> },
+      ],
+    },
+    // Routes with NoFooterLayout
+    {
+      element: <NoFooterLayout />,
+      children: [
+        // { path: "/login", element: <LoginMain /> },
+        { path: "/register", element: <Register /> },
+        { path: "/stripe", element: <PaymentForm /> },
+      ],
+    },
+  ]);
+
+  return (
+
     <StripeProvider>
-   <RouterProvider router={router} />
-   </StripeProvider>
+        <LoginMain show={loginShow} onClose={handleLoginClose} />
+     
+      <RouterProvider router={router} />
+    </StripeProvider>
+
   )
 }
 

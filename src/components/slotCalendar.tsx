@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { getAllClasses } from "../services/classes";
 import { ThreeDots } from "react-loader-spinner";
 import { FaClock, FaUsers, FaMapMarkerAlt } from "react-icons/fa";
+import { parse, format } from "date-fns";
 
 interface CalendarProps {
     courseId: string;
@@ -16,6 +17,7 @@ interface CourseDate {
     endTime: string;
     price: number;
     slots: number;
+    tax: number;
 }
 
 interface Course {
@@ -49,6 +51,7 @@ const CourseCalendar: React.FC<CalendarProps> = ({ courseId, onClose }) => {
                     endTime: course.endTime,
                     price: 399,
                     slots: course.availableSeats,
+                    tax: course.tax ? course.tax : 1
                 });
             } else {
                 acc.push({
@@ -63,6 +66,7 @@ const CourseCalendar: React.FC<CalendarProps> = ({ courseId, onClose }) => {
                             endTime: course.endTime,
                             price: 399,
                             slots: course.availableSeats,
+                            tax: course.tax ? course.tax : 1
                         },
                     ],
                 });
@@ -78,9 +82,27 @@ const CourseCalendar: React.FC<CalendarProps> = ({ courseId, onClose }) => {
     const course = courses.find((c: Course) => c.type === courseId);
 
     const handlePayment = (dateDetails: CourseDate) => {
+
+        const startDateTime = formatDateTimeForGoogleCalendar(dateDetails.date, dateDetails.statTime);
+        const endDateTime = formatDateTimeForGoogleCalendar(dateDetails.date, dateDetails.endTime);
+
         navigate("/stripe", {
-            state: { date: dateDetails.date, courseId: course?.courseId, price: dateDetails.price },
+            state: {
+                date: dateDetails.date,
+                courseId: course?.courseId,
+                courseName: course?.name,
+                startTime: startDateTime,
+                endTime: endDateTime,
+                price: dateDetails.price,
+                tax: dateDetails.tax ? dateDetails.tax : 1
+            },
         });
+    };
+
+    const formatDateTimeForGoogleCalendar = (date: string, time: string) => {
+        const dateTimeString = `${date.split("T")[0]}T${time}`;
+        const parsedDate = parse(dateTimeString, "yyyy-MM-dd'T'h:mm a", new Date());
+        return format(parsedDate, "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
     };
 
     const groupDatesByMonth = (dates: CourseDate[]) => {
@@ -168,18 +190,16 @@ const CourseCalendar: React.FC<CalendarProps> = ({ courseId, onClose }) => {
                                                         <p className="text-sm text-gray-600">
                                                             Slot Available:{" "}
                                                             <span
-                                                                className={`font-semibold ${dateDetails.slots > 0
-                                                                        ? "text-green-500"
-                                                                        : "text-red-500"
+                                                                className={`font-semibold ${dateDetails.slots > 3
+                                                                    ? "text-green-500"
+                                                                    : dateDetails.slots > 0 ? "text-orange-500" :"text-Red-500"
                                                                     }`}
                                                             >
-                                                                {dateDetails.slots > 0
-                                                                    ? dateDetails.slots
-                                                                    : "Fully Booked"}
+                                                                {dateDetails.slots}
                                                             </span>
                                                         </p>
                                                     </div>
-                                            
+
                                                 </div>
 
                                                 <div className="w-full sm:w-auto items-center flex">
@@ -189,8 +209,8 @@ const CourseCalendar: React.FC<CalendarProps> = ({ courseId, onClose }) => {
                                                         }
                                                         disabled={dateDetails.slots < 1}
                                                         className={`w-full sm:w-auto px-3 py-2 rounded-full lg:me-5 text-white font-semibold ${dateDetails.slots === 0
-                                                                ? "bg-gray-300 cursor-not-allowed"
-                                                                : "bg-blue-500 hover:bg-blue-600"
+                                                            ? "bg-gray-300 cursor-not-allowed"
+                                                            : "bg-blue-500 hover:bg-blue-600"
                                                             }`}
                                                     >
                                                         {dateDetails.slots === 0

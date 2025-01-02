@@ -2,13 +2,16 @@ import React, { useEffect, useState } from "react";
 import Logo from "../assets/images/SS Capital Logo.png";
 import { useNavigate, matchPath, useLocation, Link } from "react-router-dom";
 import Cookies from 'js-cookie';
-import { FiLogOut, FiUserCheck  } from 'react-icons/fi';  // Add Sign-out icon from react-icons
+import { FiLogOut, FiUserCheck, FiHome, FiBookOpen, FiLogIn } from 'react-icons/fi';  // Add Sign-out icon from react-icons
+import { MdCardMembership } from "react-icons/md";
+import { RiContactsLine } from "react-icons/ri";
 
 interface HeaderProps {
+  onLoginOpen: () => void;
   onScrollTo?: (section: string) => void; // Optional prop
 }
 
-const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
+const Header: React.FC<HeaderProps> = ({ onScrollTo, onLoginOpen }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const currentPath = location.pathname;
@@ -17,6 +20,7 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userDetails, setUserDetails] = useState<any>({});
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false); // Track profile menu visibility
+
 
   const propertyPaths = [
     "/terms",
@@ -52,9 +56,10 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
     navigate('/');  // Redirect to login page
   };
 
+
   useEffect(() => {
     getLoginDetails();
-  }, []);
+  }, [onLoginOpen]);
 
   const isStaticPath = propertyPaths.includes(currentPath);
   const isDynamicPath =
@@ -99,7 +104,7 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
 
       {/* Sliding Navigation Menu */}
       <div
-        className={`fixed top-0 left-0 h-full w-full bg-purple-100 shadow-md z-50 transform ${isMenuOpen ? "translate-x-0" : "-translate-x-full"
+        className={`fixed top-0 left-0 h-full w-full bg-white shadow-md z-50 transform ${isMenuOpen ? "translate-x-0" : "-translate-x-full"
           } transition-transform duration-300 md:hidden`}
       >
         <button
@@ -121,39 +126,102 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
             />
           </svg>
         </button>
-        <ul className="flex flex-col text-xl mt-5 items-center p-6 space-y-4">
-          <Link to="/" onClick={() => setIsMenuOpen(false)}>
-            <li className="cursor-pointer hover:text-white">Home</li>
-          </Link>
-          <Link to="/courses">
-            <li className="cursor-pointer hover:text-white">Courses</li>
-          </Link>
-          <li
-            className="cursor-pointer hover:text-white"
-            onClick={() => {
-              navigate('/choose_plan');
-              setIsMenuOpen(false);
-            }}
-          >Membership</li>
-          <li
-            className="cursor-pointer hover:text-white"
-            onClick={() => {
-              navigate('/contact');
-            }}
-          >
-            Contact
-          </li>
+        <ul className="flex flex-col text-xl mt-2 p-4 space-y-4">
           <li>
-            <div className="flex gap-3">
-              <button
-                className="py-2 px-3 border-black border rounded-full text-black hover:border-white hover:text-white"
-                onClick={() => navigate('/login')}
-              >
-                <p>Sign up</p>
-              </button>
+            <div className="flex gap-3 relative">
+              {isLoggedIn ? (
+                <>
+                  <div className="flex items-center space-x-2 relative">
+                    {/* Avatar Image */}
+                    <img
+                      src={userDetails.photoUrl}
+                      alt=""
+                      className="rounded-full w-10 h-10 cursor-pointer"
+                      // onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)} // Toggle profile menu
+                      onError={(e) => {
+                        console.error("Image failed to load:", userDetails.photoUrl);
+                      }}
+                    />
+                    <div className="p-1 cursor-pointer">
+                      <p className="text-black text-semibold text-md">{userDetails.displayName}</p>
+                      <p className="text-gray-500 text-sm">{userDetails.email}</p>
+
+                    </div>
+                    {/* Profile Dropdown */}
+                    {/* {isProfileMenuOpen && (
+                    
+                  )} */}
+
+                  </div>
+                </>
+              ) : null}
             </div>
           </li>
+          <Link to="/" onClick={() => setIsMenuOpen(false)}>
+            <div className="flex space-x-2 items-center cursor-pointer hover:text-[#4285F4]">
+              <FiHome />
+              <li className="">Home</li>
+            </div>
+          </Link>
+          <Link to="/courses">
+            <div className="flex space-x-2 items-center cursor-pointer hover:text-[#4285F4]">
+              <FiBookOpen />
+              <li className="">Courses</li>
+            </div>
+          </Link>
+          <div className="flex space-x-2 items-center cursor-pointer hover:text-[#4285F4]">
+            <MdCardMembership />
+            <li
+              className=""
+              onClick={() => {
+                navigate('/choose_plan');
+                setIsMenuOpen(false);
+              }}
+            >Membership</li>
+          </div>
+          <div className="flex space-x-2 items-center cursor-pointer hover:text-[#4285F4]">
+            <RiContactsLine />
+            <li
+              className="cursor-pointer hover:text-[#4285F4]"
+              onClick={() => {
+                navigate('/contact');
+              }}
+            >
+              Contact
+            </li>
+          </div>
+          <li>
+            <div>
+              <hr />
+              {isLoggedIn ? (
+                <div className="flex items-center space-x-2 pt-2 text-Red-500 hover:text-[#4285F4] text-md cursor-pointer" onClick={handleSignOut}>
+                  <FiLogOut />
+                  <p>Sign out</p>
+                </div>
+              ) : (
+                <div className="flex space-x-2 items-center pt-2 text-black cursor-pointer hover:text-[#4285F4]" onClick={() => {
+                  onLoginOpen();
+                  setIsMenuOpen(false);
+                }}>
+                  <FiLogIn />
+                  <p
+                    className=""
+                  // onClick={() => navigate('/login')}
+
+                  >
+                    Sign in
+                  </p>
+                </div>
+              )}
+
+
+            </div>
+          </li>
+
         </ul>
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+          <img src={Logo} alt="SS Capital Logo" className="h-24 w-28" />
+        </div>
       </div>
 
       {/* Desktop Navigation */}
@@ -185,25 +253,26 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
             <div className="relative">
               {/* Avatar Image */}
               <img
+                loading="lazy"
                 src={userDetails.photoUrl}
                 alt="User Avatar"
                 className="rounded-full w-10 h-10 cursor-pointer"
                 onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)} // Toggle profile menu
                 onError={(e) => {
-                  console.error("Image failed to load:", userDetails.photoUrl);
+                  console.error("Image failed to load:", userDetails.photoUrl, e);
                 }}
               />
               {/* Profile Dropdown */}
               {isProfileMenuOpen && (
                 <div className="absolute z-10 right-0 top-12 bg-white shadow-lg border rounded-lg p-2 w-32">
                   <div className="flex items-center space-x-2 p-2 cursor-pointer">
-                  <FiUserCheck />
+                    <FiUserCheck />
                     <p className="text-[#4285F4] text-sm">{userDetails.displayName}</p>
                   </div>
-                  <hr/>
+                  <hr />
                   <div className="flex items-center space-x-2 p-2 hover:bg-gray-200 text-sm cursor-pointer" onClick={handleSignOut}>
-                    <FiLogOut style={{color:"red"}} />
-                    <p style={{color:"red"}}>Sign out</p>
+                    <FiLogOut style={{ color: "red" }} />
+                    <p style={{ color: "red" }}>Sign out</p>
                   </div>
                 </div>
               )}
@@ -211,7 +280,8 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo }) => {
           ) : (
             <button
               className="py-2 px-3 border-googleBlue-500 border rounded-full text-googleBlue-500"
-              onClick={() => navigate('/login')}
+              // onClick={() => navigate('/login')}
+              onClick={() => onLoginOpen()}
             >
               <p>Sign in</p>
             </button>

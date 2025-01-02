@@ -1,146 +1,122 @@
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { useState } from 'react';
-import googleLogo from '../../assets/images/googleLogo.png';
-import bgImg from '../../assets/images/imgBg.svg';
-
-// import bgImg from '../../assets/images/loginBg.avif';
-import { auth } from '../../firebase/firebaseConfig';
-import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import googleLogo from '../../assets/images/googleLogo.png';
+import { auth } from '../../firebase/firebaseConfig';
+import FacebookLogin from 'react-facebook-login';
 
+interface LoginMainProps {
+  show: boolean;
+  onClose: () => void;
+}
 
+const LoginMain = ({ show, onClose }: LoginMainProps) => {
 
+  const handleGoogleLogin = async () => {
+    console.log('auth', auth);
+    const provider = new GoogleAuthProvider();
+    provider.addScope('https://www.googleapis.com/auth/calendar.events');
+    try {
+      const result: any = await signInWithPopup(auth, provider);
+      Cookies.set('accessToken', result._tokenResponse.oauthAccessToken, { expires: 1 });
+      Cookies.set('refreshToken', result.user.stsTokenManager.refreshToken, { expires: 1 });
+      Cookies.set('userDetails', JSON.stringify(result.user.reloadUserInfo), { expires: 1 });
+      onClose();
+    } catch (error) {
+      console.error('Login Error:', error);
+    }
+  };
 
-const LoginMain = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [errors, setErrors] = useState({ email: '', password: '' });
+  if (!show) {
+    return null;
+  }
 
-    //used for changing from sign in to login
-    const [changeAuth, setChangeAuth] = useState(true);;
-    const navigate = useNavigate()
+  const handleFacebookCallback = (response: any) => {
+    if (response?.status === "unknown") {
+        console.error('Sorry!', 'Something went wrong with facebook Login.');
+     return;
+    }
+    console.log(response);
+      // console will print following object for you.
+    //     {
+    //       "name": "Syed M Ahmad",
+    //       "email": "ssgcommando90@yahoo.com",
+    //       "picture": {
+    //           "data": {
+    //               "height": 50,
+    //               "is_silhouette": false,
+    //               "url": "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=7138203302951151&height=50&width=50&ext=1714730459&hash=AfplSQ-UxV9LeHd5wYnaKbeKEIfUjMN-pHFGZJaWwC-00g",
+    //               "width": 50
+    //           }
+    //       },
+    //       "id": "7138203302951151",
+    //       "userID": "7138203302951151",
+    //       "expiresIn": 7142,
+    //       "accessToken": "EAANdCvUejTUBO3C5uZCp0n6i9H31bCdW6bZBUcOET2aTbWlZCJA7kQoQ1jxDCsnFctxZBAQPl2kSUSqb4N6KDLM8wROXn4fZCBj1Pmgq5peKkmPv7YJWHKXLb9mOIwcBbJJGj5EaXwLURktOGSv7HeNsiGxZBPBr1jewzZAL7FxbITljSsBq6LYnhKO6xT9D5FbFZB1JWdjii63xAeU36wZDZD",
+    //       "signedRequest": "r3tHehW5aounQcMzalAtmiHR_lCmRHy0GSmrlD4w3zM.eyJ1c2VyX2lkIjoiNzEzODIwMzMwMjk1MTE1MSIsImNvZGUiOiJBUURUaEItZ3Z6RjViN09yV3VyM2tOai1FdDNQM1NGSHpheWVsMEYxSXc1NTNlTHBoZUs3M2RtTENFbVZTVjgySEZlUUFCQ0dPR19zME94RjU4LS14MFYxUWZIYkhCdDFTVl9FNG1scnh6Y2Z5RTVFNVozUy03SllRWUI2MEh1bW15b19mN3FKc3pLZENSbWFBbkE2c3JXenBCYnRfLXZIVTZjRTNYSjZnN19Db2xXNjk0Z1JDODd5eVVjT2R4NEszMHY4LXdrVlpVQWNvMXBkZGR1eTVqbFN4Yld0RkhGVlNpS282OGZxc09YdndYSXlDR0NOTjJrZEhDUDJSZElkT3VmSmRhbGs0dEo1TTRFUU9nWXJ3QllkeVlyUlY1ZlRuS3RvdGJyMF9ROHpQT21PTzQ2eXNBZmtJdGdjblFjOG5VaHQ5U0RMRlAzRVBhS0Q0dV9mY0YwbyIsImFsZ29yaXRobSI6IkhNQUMtU0hBMjU2IiwiaXNzdWVkX2F0IjoxNzEyMTM4NDU4fQ",
+    //       "graphDomain": "facebook",
+    //       "data_access_expiration_time": 1719914458
+    //   }
+   }
 
-    const validateForm = () => {
-        let isValid = true;
-        const newErrors = { email: '', password: '' };
-        // const navigate = useNavigate()
-
-
-        if (!email) {
-            newErrors.email = 'Email is required.';
-            isValid = false;
-        } else if (!/\S+@\S+\.\S+/.test(email)) {
-            newErrors.email = 'Invalid email address.';
-            isValid = false;
-        }
-
-        if (!password) {
-            newErrors.password = 'Password is required.';
-            isValid = false;
-        } else if (password.length < 6) {
-            newErrors.password = 'Password must be at least 6 characters long.';
-            isValid = false;
-        }
-
-        setErrors(newErrors);
-        return isValid;
-    };
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-
-        if (validateForm()) {
-            console.log('Form submitted successfully:', { email, password });
-        }
-    };
-    const handleGoogleLogin = async () => {
-        console.log('auth', auth)
-        const provider = new GoogleAuthProvider();
-        try {
-            const result:any = await signInWithPopup(auth, provider);
-            // localStorage.setItem('accessToken',result.user.accessToken)
-            // localStorage.setItem('refreshToken',result.user.stsTokenManager.refreshToken)
-            // localStorage.setItem('userDetails', JSON.stringify(result.user.reloadUserInfo))
-            Cookies.set('accessToken', result.user.accessToken, { expires: 1 });
-            Cookies.set('refreshToken', result.user.stsTokenManager.refreshToken, { expires: 1 });
-            Cookies.set('userDetails', JSON.stringify(result.user.reloadUserInfo), { expires: 1 });
-            navigate(-1);
-        } catch (error) {
-            console.error('Login Error:', error);
-        }
-    };
-
-    return (
-        <div className="min-h-screen flex flex-col lg:flex-row ">
-            {/* Left Section */}
-            <div
-                className=" lg:w-1/2 w-full bg-cover bg-center text-white flex items-center justify-center lg:p-0 "
-                style={{ backgroundImage: `url(${bgImg})` }}
-            >
-                {/* Optional content */}
-                <img src={bgImg} alt="" className='lg:hidden block' />
-            </div>
-
-            {/* Right Section */}
-            <div className=" lg:w-1/2 w-full flex items-center justify-center p-5">
-                <div className="w-full max-w-[400px] bg-white rounded-lg shadow-lg p-6 md:p-8 text-center">
-                    <h2 className="text-3xl font-semibold text-start ">{changeAuth?"Login":"Sign Up"}</h2>
-                    <div className='flex justify-between items-center mb-8'>
-                        <p>{changeAuth?"Welcome Back !":"Create an Account"}</p>
-                    <p className=" text-sm text-gray-500">
-                       {changeAuth?"New User ?":"Existing User ?"} <a  className="text-blue-600 underline cursor-pointer" onClick={()=>setChangeAuth(!changeAuth)}>{changeAuth?"Sign Up":"Log In"}</a>
-                    </p>
-                    </div>
-                    {/* <form className="flex flex-col space-y-4" onSubmit={handleSubmit}>
-                        <div className="text-left">
-                            <input
-                                type="email"
-                                placeholder="Email"
-                                className="rounded-md p-3 w-full"
-                                style={{
-                                    border: errors.email ? '1px solid #f87171' : '1px solid #d1d5db',
-                                    outline: errors.email ? '2px solid #fca5a5' : 'none',
-                                }}
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                            {errors.email && (
-                                <p className="text-xs mt-1" style={{ color: "red" }}>{errors.email}</p>
-                            )}
-                        </div>
-                        <div className="text-left">
-                            <input
-                                type="password"
-                                placeholder="Password"
-                                className="rounded-md p-3 w-full"
-                                style={{
-                                    border: errors.password ? '1px solid #f87171' : '1px solid #d1d5db',
-                                    outline: errors.password ? '2px solid #fca5a5' : 'none',
-                                }}
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                            {errors.password && (
-                                <p className="text-xs mt-1" style={{ color: "red" }}>{errors.password}</p>
-                            )}
-                        </div>
-                        <button 
-                            type="submit" 
-                            className="bg-googleBlue-500 text-white py-2 rounded-md hover:bg-blue-800 transition">
-                            Sign In
-                        </button> 
-                    </form> */}
-                    {/* <div className="my-4 text-gray-500">or</div> */}
-                    <button onClick={handleGoogleLogin}
-                        className="flex items-center justify-center w-full rounded-full py-3 px-3 bg-googleBlue-500 text-white hover:bg-blue-300 hover:text-black">
-                        <img src={googleLogo}  alt="Google Logo" className="h-6 w-6 mr-2 bg-white rounded-full" />
-                        Sign up with Google
-                    </button>
-                   
-                </div>
-            </div>
+  return (
+    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+      {/* Modal Content */}
+      <div className="bg-white rounded-lg shadow-lg p-4 md:p-5 max-w-[350px] w-full relative mx-5">
+        <button
+          className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+          onClick={onClose}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+        <h2 className="text-3xl font-semibold text-start">
+          Sign In
+        </h2>
+        <div className="flex justify-between items-center mb-8">
+           Welcome Back!
+          
         </div>
-    );
+        <button
+          onClick={handleGoogleLogin}
+          className="flex items-center justify-center w-full rounded-full py-2 px-2 bg-googleBlue-500 text-white hover:bg-blue-300 hover:text-black"
+        >
+          <img
+            src={googleLogo}
+            alt="Google Logo"
+            className="h-6 w-6 mr-2 bg-white rounded-full"
+          />
+          Sign In with Google
+        </button>
+        <FacebookLogin
+          appId="946726573608245" //dummy
+          autoLoad={false}
+          fields="name,email,picture"
+          callback={handleFacebookCallback}
+          cssClass="flex items-center justify-center w-full rounded-full py-2 px-2 bg-googleBlue-500 text-white hover:bg-blue-300 hover:text-black mt-4"
+          icon={
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+              alt="Facebook Logo"
+              className="h-6 w-6 mr-2 border-2 border-white bg-white rounded-full"
+            />
+          }
+          textButton="Sign In with Facebook"
+        />
+      </div>
+    </div>
+  );
 };
 
 export default LoginMain;

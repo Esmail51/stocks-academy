@@ -1,17 +1,14 @@
 import Cookies from 'js-cookie';
-import { useNavigate } from 'react-router-dom';
-import img1 from '../../assets/images/Classroom3 .jpeg';
-import Header from '../../components/header';
-import ScrollToTop from '../../components/scrollTop';
-import PaymentForm from '../../components/stripeForm';
 import { useState } from 'react';
-import ClassCalendar from '../../components/calendar';
-import SlotCalendar from '../../components/slotCalendar';
+import img1 from '../../assets/images/Classroom3 .jpeg';
+import ScrollToTop from '../../components/scrollTop';
 import CourseCalendar from '../../components/slotCalendar';
 
+interface CourseOneProps {
+  onLoginOpen: ()=> void;
+}
 
-export default function CourseOne() {
-  const navigate = useNavigate();
+const CourseOne =({ onLoginOpen }: CourseOneProps)=> {
   const [showCalendar, setShowCalender] = useState(false);
 
   const closeCalendar = () =>{
@@ -21,7 +18,7 @@ export default function CourseOne() {
   const handleEntrollButton = () => {
     const userDetails = Cookies.get('userDetails')
     if (!userDetails) {
-      navigate('/login');
+      onLoginOpen()
     } else {
       console.log("Logged in");
       setShowCalender(true);
@@ -30,7 +27,6 @@ export default function CourseOne() {
   }
   return (
     <div className='' >
-      <Header></Header>
       <ScrollToTop />
     
       
@@ -56,11 +52,11 @@ export default function CourseOne() {
                 <h3 className='text-xl font-semibold text-start text-gray-900'>Booking Details</h3>
                 <div className=' text-start  text-gray-700'>
                   <div>
-                    <p className='font-semibold'>Price: $ 399.00<span className='font-semibold text-xs'>+Tax</span></p>
+                    <p className='font-semibold text-black'>Price: $ 399.00<span className='font-semibold text-xs'> +Tax</span></p>
                   </div>
                   <button className="inline-block bg-blue-600 text-white font-semibold text-sm px-3 py-2 mt-2 rounded-lg shadow-lg hover:bg-purple-100 hover:text-black transition"
                     onClick={handleEntrollButton}>
-                    Course Enrollment</button>
+                    Enroll Now</button>
                 </div>
 
 
@@ -100,3 +96,5 @@ Course Dates & Enrollment Details:     [ Course Enrollment Button ]  */}
     </div>
   )
 }
+
+export default CourseOne;

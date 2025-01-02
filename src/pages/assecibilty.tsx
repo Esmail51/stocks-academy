@@ -2,7 +2,7 @@ import Header from "../components/header";
 
 const Assecibilty = () => {
     return (
-        <><Header />
+        <>
         <div>
 
             <div className="p-4 text-start mt-24">
