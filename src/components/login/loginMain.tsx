@@ -2,7 +2,7 @@ import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import Cookies from 'js-cookie';
 import googleLogo from '../../assets/images/googleLogo.png';
 import { auth } from '../../firebase/firebaseConfig';
-import FacebookLogin from 'react-facebook-login';
+import FacebookLogin from '@greatsumini/react-facebook-login';
 
 interface LoginMainProps {
   show: boolean;
@@ -100,19 +100,24 @@ const LoginMain = ({ show, onClose }: LoginMainProps) => {
           Sign In with Google
         </button>
         <FacebookLogin
-          appId="946726573608245" //dummy
-          autoLoad={false}
-          fields="name,email,picture"
-          callback={handleFacebookCallback}
-          cssClass="flex items-center justify-center w-full rounded-full py-2 px-2 bg-googleBlue-500 text-white hover:bg-blue-300 hover:text-black mt-4"
-          icon={
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
-              alt="Facebook Logo"
-              className="h-6 w-6 mr-2 border-2 border-white bg-white rounded-full"
-            />
-          }
-          textButton="Sign In with Facebook"
+          appId="579287064855317" // Replace with your actual app ID
+          onSuccess={handleFacebookCallback}
+          onFail={(error) => console.error('Facebook Login Failed:', error)}
+          onProfileSuccess={(response) => console.log('Profile:', response)}
+          className="flex items-center justify-center w-full rounded-full py-2 px-2 mt-4 bg-googleBlue-500 text-white hover:bg-blue-300 hover:text-black"
+          render={({ onClick }) => (
+            <button
+              onClick={onClick}
+              className="flex items-center justify-center w-full rounded-full py-2 px-2 mt-4 bg-googleBlue-500 text-white hover:bg-blue-300 hover:text-black"
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+                alt="Facebook Logo"
+                className="h-6 w-6 mr-2 border-2 border-white bg-white rounded-full"
+              />
+              Sign In with Facebook
+            </button>
+          )}
         />
       </div>
     </div>
