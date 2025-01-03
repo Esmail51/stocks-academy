@@ -264,10 +264,10 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo, onLoginOpen }) => {
               />
               {/* Profile Dropdown */}
               {isProfileMenuOpen && (
-                <div className="absolute z-10 right-0 top-12 bg-white shadow-lg border rounded-lg p-2 w-32">
+                <div className="absolute z-10 right-0 top-12 bg-white shadow-lg border rounded-lg p-2 min-w-[8rem] max-w-[16rem]">
                   <div className="flex items-center space-x-2 p-2 cursor-pointer">
                     <FiUserCheck />
-                    <p className="text-[#4285F4] text-sm">{userDetails.displayName}</p>
+                    <p className="text-[#4285F4] text-sm overflow-hidden whitespace-nowrap text-ellipsis">{userDetails.displayName}</p>
                   </div>
                   <hr />
                   <div className="flex items-center space-x-2 p-2 hover:bg-gray-200 text-sm cursor-pointer" onClick={handleSignOut}>

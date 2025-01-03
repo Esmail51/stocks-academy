@@ -4,13 +4,13 @@ import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC-ehL5MIHKNcNHH2J_8kIkvI9tfTn9X_E",
-  authDomain: "strictly-stocks.firebaseapp.com",
-  projectId: "strictly-stocks",
-  storageBucket: "strictly-stocks.firebasestorage.app",
-  messagingSenderId: "701095227141",
-  appId: "1:701095227141:web:98ef8754c69909d6f8916c",
-  measurementId: "G-WZVZ6R75F7"
+  apiKey: "AIzaSyBuRfcoPDzRvVhYuVnn6JjPTyjwExWejdc",
+  authDomain: "strictly-stocks-cbebc.firebaseapp.com",
+  projectId: "strictly-stocks-cbebc",
+  storageBucket: "strictly-stocks-cbebc.firebasestorage.app",
+  messagingSenderId: "790843306622",
+  appId: "1:790843306622:web:d49e0b5f0b44c1e395de2f",
+  measurementId: "G-6DH8P6ZVTW"
 };
 
 

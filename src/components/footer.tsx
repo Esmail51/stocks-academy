@@ -67,7 +67,7 @@ const Footer = () => {
 
         {/* Footer bottom */}
         <div className="mt-8 border-t text-black border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center text-sm">
-          <p>© 2025 StrictlyStocks</p>
+          <p>© 2025 Strictlystocks</p>
           <ul className="flex space-x-2 md:space-x-4 mt-4 md:mt-0 ">
             <li><p className="hover:text-googleBlue-500 cursor-pointer" onClick={()=> window.open('/assecibilty', '_blank')}>Accessibility</p></li>
             <li><p className="hover:text-googleBlue-500 cursor-pointer" onClick={()=> window.open('/terms', '_blank')}>Terms & Conditions</p></li>

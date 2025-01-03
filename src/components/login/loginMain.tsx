@@ -2,7 +2,7 @@ import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import Cookies from 'js-cookie';
 import googleLogo from '../../assets/images/googleLogo.png';
 import { auth } from '../../firebase/firebaseConfig';
-import FacebookLogin from '@greatsumini/react-facebook-login';
+// import FacebookLogin from '@greatsumini/react-facebook-login';
 
 interface LoginMainProps {
   show: boolean;
@@ -30,12 +30,12 @@ const LoginMain = ({ show, onClose }: LoginMainProps) => {
     return null;
   }
 
-  const handleFacebookCallback = (response: any) => {
-    if (response?.status === "unknown") {
-        console.error('Sorry!', 'Something went wrong with facebook Login.');
-     return;
-    }
-    console.log(response);
+  // const handleFacebookCallback = (response: any) => {
+  //   if (response?.status === "unknown") {
+  //       console.error('Sorry!', 'Something went wrong with facebook Login.');
+  //    return;
+  //   }
+  //   console.log(response);
       // console will print following object for you.
     //     {
     //       "name": "Syed M Ahmad",
@@ -56,7 +56,7 @@ const LoginMain = ({ show, onClose }: LoginMainProps) => {
     //       "graphDomain": "facebook",
     //       "data_access_expiration_time": 1719914458
     //   }
-   }
+  //  }
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
@@ -92,14 +92,16 @@ const LoginMain = ({ show, onClose }: LoginMainProps) => {
           onClick={handleGoogleLogin}
           className="flex items-center justify-center w-full rounded-full py-2 px-2 bg-googleBlue-500 text-white hover:bg-blue-300 hover:text-black"
         >
+          <div className="flex items-center">
           <img
             src={googleLogo}
             alt="Google Logo"
-            className="h-6 w-6 mr-2 bg-white rounded-full"
+            className="h-6 w-6 mr-2 bg-white rounded-full "
           />
-          Sign In with Google
+          <span>Sign in with Google</span>
+          </div>
         </button>
-        <FacebookLogin
+        {/* <FacebookLogin
           appId="579287064855317" // Replace with your actual app ID
           onSuccess={handleFacebookCallback}
           onFail={(error) => console.error('Facebook Login Failed:', error)}
@@ -110,15 +112,17 @@ const LoginMain = ({ show, onClose }: LoginMainProps) => {
               onClick={onClick}
               className="flex items-center justify-center w-full rounded-full py-2 px-2 mt-4 bg-googleBlue-500 text-white hover:bg-blue-300 hover:text-black"
             >
+              <div className="flex items-center">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
                 alt="Facebook Logo"
                 className="h-6 w-6 mr-2 border-2 border-white bg-white rounded-full"
               />
-              Sign In with Facebook
+              <span>Sign in with Facebook</span>
+              </div>
             </button>
           )}
-        />
+        /> */}
       </div>
     </div>
   );

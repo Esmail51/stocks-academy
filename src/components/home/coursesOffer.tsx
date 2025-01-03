@@ -30,8 +30,8 @@ export default function CoursesOffer() {
           <p className="mt-2 mb-5 text-gray-600">A comprehensive 7-hour seminar course in Toronto covering introductory concepts of the North American Equity stock market.</p>
       <div className="container mx-auto flex items-stretch flex-col lg:flex-row gap-3">
         
-        <div className="lg:w-1/2 w-full flex items-center justify-center mt-3">
-          <img src={img4} alt="" className='rounded-xl w-full max-h-[460px] object-cover' />
+        <div className="lg:w-1/2 w-full flex items-center justify-center">
+          <img src={img4} alt="" className='rounded-xl w-full max-h-[400px] object-cover' />
         </div>
 
         <div className="lg:w-1/2 w-full flex text-start p-4 flex-col justify-center">
@@ -43,7 +43,7 @@ export default function CoursesOffer() {
                 <img src={course.image} alt="" className="w-12 h-12 object-cover" />
                 <div>
                   <h3 className="text-lg font-medium">{course.title}</h3>
-                  <p className="text-gray-700">{course.description}</p>
+                  <p className="text-sm text-gray-700">{course.description}</p>
                 </div>
               </div>
             ))}

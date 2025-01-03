@@ -160,10 +160,10 @@ const CourseCalendar: React.FC<CalendarProps> = ({ courseId, onClose }) => {
                                         return (
                                             <div
                                                 key={index}
-                                                className={`flex flex-col sm:flex-row  items-center sm:items-stretch border rounded-lg p-2 bg-white shadow-md space-y-3 sm:space-y-0 sm:space-x-6`}
+                                                className={`flex flex-col sm:flex-row items-center sm:items-stretch border rounded-lg p-2 bg-white shadow-md space-y-3 sm:space-y-0 sm:space-x-6`}
                                             >
                                                 <div
-                                                    className={`flex flex-col items-center text-blue-600 justify-center w-full sm:w-20 text-center font-semibold rounded-lg p-2`}
+                                                    className={`flex flex-col items-center justify-center w-full sm:w-20 text-center font-semibold rounded-lg p-2`}
                                                 >
                                                     <p className="text-base sm:text-lg">{weekday}</p>
                                                     <p className="text-2xl sm:text-3xl">{day}</p>
