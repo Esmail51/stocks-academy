@@ -23,7 +23,7 @@ export default function MembershipPage() {
                     <div className='  gap-20 lg:mx-24 mx-5'>
 
                             <div>
-                                <h1 className='text-5xl font-md mt-2 mb-10 text-center text-white' >Choose the Best Membership Plan</h1>
+                                <h1 className='text-5xl font-md mt-2 mb-10 text-center text-white' >Choose the Best Community Membership</h1>
                                 {/* <p className='mt-2 mb-10'>This is the Membership Page. You can add any content here.</p> */}
                               
                             </div>

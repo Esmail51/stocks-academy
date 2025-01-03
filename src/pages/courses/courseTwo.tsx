@@ -28,7 +28,7 @@ const CourseTwo = ({ onLoginOpen }: CourseProps) => {
     }
   }
   return (
-    <div className='bg-white' >
+    <div className='' >
       <ScrollToTop />
 
       <section className='  container py-12 px-4 md:px-16 lg:px-24'>
@@ -70,7 +70,7 @@ const CourseTwo = ({ onLoginOpen }: CourseProps) => {
 
             </div>
           </div>
-          {showCalendar ? <CourseCalendar courseId='course2' onClose={closeCalendar} /> : null}
+          {showCalendar ? <CourseCalendar courseId='course2' coursePrice={249} onClose={closeCalendar} /> : null}
 
         </div>
 

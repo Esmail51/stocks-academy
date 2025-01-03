@@ -8,6 +8,7 @@ import { parse, format } from "date-fns";
 
 interface CalendarProps {
     courseId: string;
+    coursePrice: number;
     onClose: () => void;
 }
 
@@ -28,7 +29,7 @@ interface Course {
     availableDates: CourseDate[];
 }
 
-const CourseCalendar: React.FC<CalendarProps> = ({ courseId, onClose }) => {
+const CourseCalendar: React.FC<CalendarProps> = ({ courseId, onClose, coursePrice }) => {
     const navigate = useNavigate();
     const [courses, setCourses] = useState<Course[]>([]);
     const [loading, setLoading] = useState(true);
@@ -49,7 +50,7 @@ const CourseCalendar: React.FC<CalendarProps> = ({ courseId, onClose }) => {
                     date: formattedDate,
                     statTime: course.startTime,
                     endTime: course.endTime,
-                    price: 399,
+                    price: coursePrice,
                     slots: course.availableSeats,
                     tax: course.tax ? course.tax : 1
                 });
@@ -64,7 +65,7 @@ const CourseCalendar: React.FC<CalendarProps> = ({ courseId, onClose }) => {
                             date: formattedDate,
                             statTime: course.startTime,
                             endTime: course.endTime,
-                            price: 399,
+                            price: coursePrice,
                             slots: course.availableSeats,
                             tax: course.tax ? course.tax : 1
                         },

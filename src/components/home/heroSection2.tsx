@@ -25,8 +25,8 @@ export default function heroSection2() {
 
             <h3 className="text-xl font-bold mb-4 text-center">Historic Chart Patterns</h3>
             <p className="text-sm text-center">
-              Study historic trends and price actions using advanced technical analysis
-              tools, empowering you to make smarter investment decisions.
+              Studying historic chart patterns and understanding and studying price action using a myriad of
+              technical analysis indicators allows for more informed, efficient, and profitable decision making.
             </p>
           </div>
 
@@ -39,8 +39,9 @@ export default function heroSection2() {
 
             <h3 className="text-xl font-bold mb-4 text-center">Price Action Tools</h3>
             <p className="text-sm text-center">
-              Learn to analyze and interpret stock, gold, or cryptocurrency price
-              movements, gaining the ability to systemize your decision-making process.
+              Tools that sharpen your ability to read and understand the price action of a stock share, or the
+              price of gold or a crypto-currency over a period of time; to allow you to use that data in your
+              analysis and become more systemized and equipped in your decision making process.
             </p>
           </div>
 
@@ -53,8 +54,9 @@ export default function heroSection2() {
 
             <h3 className="text-xl font-bold mb-4 text-center">Risk Management Systems</h3>
             <p className="text-sm text-center">
-              Refine your understanding of technical analysis and build robust risk
-              management frameworks to become a confident investor or trader.
+              Students dive into a curriculum to equip themselves and/or refine and expand on their
+              knowledge and understanding of technical analysis tools &amp; risk management systems to become
+              more resourced and adept investors and traders.
             </p>
           </div>
         </div>

@@ -78,7 +78,7 @@ const CourseOne =({ onLoginOpen }: CourseOneProps)=> {
               
             </div>
           </div>
-          {showCalendar ? <CourseCalendar courseId='intro' onClose={closeCalendar} /> : null}
+          {showCalendar ? <CourseCalendar courseId='intro' coursePrice={399} onClose={closeCalendar} /> : null}
 
         </div>
 

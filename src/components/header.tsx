@@ -108,7 +108,7 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo, onLoginOpen }) => {
           } transition-transform duration-300 md:hidden`}
       >
         <button
-          className="text-white p-2 bg-purple-500 focus:outline-none absolute top-4 right-4"
+          className="text-white p-2 bg-purple-500 focus:outline-none z-10 absolute top-4 right-4"
           onClick={toggleMenu}
         >
           <svg
@@ -171,28 +171,30 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo, onLoginOpen }) => {
               <li className="">Courses</li>
             </div>
           </Link>
-          <div className="flex space-x-2 items-center cursor-pointer hover:text-[#4285F4]">
-            <MdCardMembership />
-            <li
-              className=""
-              onClick={() => {
-                navigate('/choose_plan');
-                setIsMenuOpen(false);
-              }}
-            >Membership</li>
-          </div>
-          <div className="flex space-x-2 items-center cursor-pointer hover:text-[#4285F4]">
-            <RiContactsLine />
-            <li
-              className="cursor-pointer hover:text-[#4285F4]"
-              onClick={() => {
-                navigate('/contact');
-                setIsMenuOpen(false);
-              }}
-            >
-              Contact
-            </li>
-          </div>
+          <Link to="/choose_plan" onClick={() => {
+            setIsMenuOpen(false);
+          }}>
+            <div className="flex space-x-2 items-center cursor-pointer hover:text-[#4285F4]">
+              <MdCardMembership />
+              <li
+                className=""
+
+              >Membership</li>
+            </div>
+          </Link>
+          <Link to="/contact" onClick={() => {
+            setIsMenuOpen(false);
+          }}>
+            <div className="flex space-x-2 items-center cursor-pointer hover:text-[#4285F4]">
+              <RiContactsLine />
+              <li
+                className=""
+
+              >
+                Contact
+              </li>
+            </div>
+          </Link>
           <li>
             <div>
               <hr />
