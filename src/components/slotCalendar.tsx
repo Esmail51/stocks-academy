@@ -156,14 +156,14 @@ const CourseCalendar: React.FC<CalendarProps> = ({ courseId, onClose }) => {
                                             .toDateString()
                                             .split(" ");
                                         const [weekday, , day] = dateParts;
-
+                                        // const rowColor = index % 2 === 0 ? "text-blue-600" : "text-gray-500";
                                         return (
                                             <div
                                                 key={index}
-                                                className="flex flex-col sm:flex-row items-center sm:items-stretch border rounded-lg p-2 bg-white shadow-md space-y-3 sm:space-y-0 sm:space-x-6"
+                                                className={`flex flex-col sm:flex-row  items-center sm:items-stretch border rounded-lg p-2 bg-white shadow-md space-y-3 sm:space-y-0 sm:space-x-6`}
                                             >
                                                 <div
-                                                    className={`flex flex-col items-center justify-center w-full sm:w-20 text-center font-semibold rounded-lg p-2`}
+                                                    className={`flex flex-col items-center text-blue-600 justify-center w-full sm:w-20 text-center font-semibold rounded-lg p-2`}
                                                 >
                                                     <p className="text-base sm:text-lg">{weekday}</p>
                                                     <p className="text-2xl sm:text-3xl">{day}</p>
@@ -212,10 +212,7 @@ const CourseCalendar: React.FC<CalendarProps> = ({ courseId, onClose }) => {
                                                             ? "bg-gray-300 cursor-not-allowed"
                                                             : "bg-blue-500 hover:bg-blue-600"
                                                             }`}
-                                                    >
-                                                        {dateDetails.slots === 0
-                                                            ? "Full"
-                                                            : "Book"}
+                                                    >Book
                                                     </button>
                                                 </div>
                                             </div>

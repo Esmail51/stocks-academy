@@ -49,7 +49,6 @@ const CourseOne =({ onLoginOpen }: CourseOneProps)=> {
             </div>
             <div className='lg:w-1/2 w-full text-start'>
             <div className='mb-6 pt-2'>
-                <h3 className='text-xl font-semibold text-start text-gray-900'>Booking Details</h3>
                 <div className=' text-start  text-gray-700'>
                   <div>
                     <p className='font-semibold text-black'>Price: $ 399.00<span className='font-semibold text-xs'> +Tax</span></p>
