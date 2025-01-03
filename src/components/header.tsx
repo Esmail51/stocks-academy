@@ -163,7 +163,9 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo, onLoginOpen }) => {
               <li className="">Home</li>
             </div>
           </Link>
-          <Link to="/courses">
+          <Link to="/courses" onClick={() => {
+            setIsMenuOpen(false);
+          }}>
             <div className="flex space-x-2 items-center cursor-pointer hover:text-[#4285F4]">
               <FiBookOpen />
               <li className="">Courses</li>
@@ -185,6 +187,7 @@ const Header: React.FC<HeaderProps> = ({ onScrollTo, onLoginOpen }) => {
               className="cursor-pointer hover:text-[#4285F4]"
               onClick={() => {
                 navigate('/contact');
+                setIsMenuOpen(false);
               }}
             >
               Contact

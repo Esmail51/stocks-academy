@@ -40,7 +40,7 @@ const PaymentForm: React.FC = () => {
     setUserDetails(userDetails);
   }, []);
 
-  const handleCreateEvent =async () => {
+  const handleCreateEvent = async () => {
     const eventDetails = {
       summary: location.state.courseName,
       description: location.state.courseName,
@@ -52,10 +52,9 @@ const PaymentForm: React.FC = () => {
         dateTime: location.state.endTime,
         timeZone: "UTC", // Adjust timezone as needed
       },
-    }
-     await createEventInCalendar(eventDetails);
-    
-  }
+    };
+    await createEventInCalendar(eventDetails);
+  };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -80,7 +79,7 @@ const PaymentForm: React.FC = () => {
       const payload = {
         amount: location.state?.price + location.state?.tax,
         currency: 'usd',
-      }
+      };
       const clientSecret = await createPaymentIntent(payload);
       console.log('Client secret:', clientSecret);
 
@@ -97,7 +96,7 @@ const PaymentForm: React.FC = () => {
           email: JSON.parse(Cookies.get('userDetails') || '{}').email,
           name: JSON.parse(Cookies.get('userDetails') || '{}').displayName,
           classId: courseId,
-        }
+        };
         try {
           const response = await createClass(payload);
           if (response) {
@@ -106,14 +105,11 @@ const PaymentForm: React.FC = () => {
             setError('Payment successful. Class created.');
             handleCreateEvent();
           }
-
         } catch (err) {
           console.error('Error:', err);
           setError('Failed to initiate payment.');
         }
-
       }
-
     } catch (err) {
       console.error('Error:', err);
       setError('Failed to initiate payment.');
@@ -133,12 +129,13 @@ const PaymentForm: React.FC = () => {
   return (
     <>
       <div className="flex justify-center items-center min-h-screen bg-gray-50">
-        <div className="w-full max-w-4xl h-[400px] bg-white rounded-lg shadow-md p-8 m-4 ">
-          <div className="grid grid-cols-2 gap-6">
-
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h2 className="text-xl font-semibold text-gray-800 mb-4">Payment Summary</h2>
-              <p className="text-sm text-gray-600">Dear <span className="font-semibold">{userDetails ? userDetails.displayName : "User"}</span>,</p>
+        <div className="w-full max-w-4xl h-auto bg-white rounded-lg shadow-md p-4 sm:p-6 md:p-8 m-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-gray-50 p-4 sm:p-6 rounded-lg shadow-sm">
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">Payment Summary</h2>
+              <p className="text-sm text-gray-600">
+                Dear <span className="font-semibold">{userDetails ? userDetails.displayName : "User"}</span>,
+              </p>
               <div className="mt-4">
                 <div className="flex justify-between text-sm text-gray-700 mt-2">
                   <span>Course fee:</span>
@@ -155,10 +152,9 @@ const PaymentForm: React.FC = () => {
               </div>
             </div>
 
-            {/* Payment Information Section */}
             <div>
               <BookingDialog isOpen={isDialogOpen} onClose={closeDialog} />
-              <h2 className="text-xl font-semibold text-gray-800 mb-6">Payment Information</h2>
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-6">Payment Information</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="cardNumber" className="text-sm font-medium">Card Number</label>
@@ -181,7 +177,6 @@ const PaymentForm: React.FC = () => {
                         },
                       }}
                       onChange={handleCardChange} />
-                    {/* Card Brand Icon */}
                     {cardBrand && (
                       <img
                         src={cardBrandIcons[cardBrand] || cardBrandIcons.default}
@@ -192,14 +187,14 @@ const PaymentForm: React.FC = () => {
                   {cardError && <p className="text-red-500 text-xs mt-2">{cardError}</p>}
                 </div>
 
-                <div className="flex gap-4">
-                  <div className="w-1/2">
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <div className="w-full sm:w-1/2">
                     <label htmlFor="cardExpiry" className="text-sm font-medium">Expiration Date (MM/YY)</label>
                     <CardExpiryElement
                       id="cardExpiry"
                       className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
                   </div>
-                  <div className="w-1/2">
+                  <div className="w-full sm:w-1/2">
                     <label htmlFor="cardCvc" className="text-sm font-medium">CVV / CVC Code</label>
                     <CardCvcElement
                       id="cardCvc"
@@ -221,7 +216,8 @@ const PaymentForm: React.FC = () => {
             </div>
           </div>
         </div>
-      </div></>
+      </div>
+    </>
   );
 };
 
