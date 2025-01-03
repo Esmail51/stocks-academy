@@ -63,7 +63,7 @@ const App = () => {
         { path: "/intro_to_technical_analysis_and_understanding", element: <CourseOne onLoginOpen={handleLoginOpen} /> },
         { path: "/in_depth_technical_analysis_training", element: <CourseTwo onLoginOpen={handleLoginOpen} /> },
         { path: "/an_introduction_to_options_trading", element: <CourseThree onLoginOpen={handleLoginOpen} /> },
-        { path: "/choose_plan", element: <MembershipPage /> },
+        { path: "/choose_plan", element: <MembershipPage onLoginOpen={handleLoginOpen} /> },
         { path: "/courses", element: <Courses /> },
         { path: "/contact", element: <ContactForm /> },
       ],

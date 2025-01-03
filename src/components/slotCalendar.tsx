@@ -13,6 +13,7 @@ interface CalendarProps {
 }
 
 interface CourseDate {
+    courseId: string;
     date: string;
     statTime: string;
     endTime: string;
@@ -37,6 +38,7 @@ const CourseCalendar: React.FC<CalendarProps> = ({ courseId, onClose, coursePric
     const fetchClasses = async () => {
         const response = await getAllClasses(1, 1, "");
         const transformedCourses: Course[] = transformCourseData(response.classes);
+        console.log(transformCourseData);
         setCourses(transformedCourses);
         setLoading(false);
     };
@@ -45,8 +47,10 @@ const CourseCalendar: React.FC<CalendarProps> = ({ courseId, onClose, coursePric
         return data.reduce((acc: Course[], course) => {
             const courseExists = acc.find((c) => c.type === course.type);
             const formattedDate = new Date(course.date).toISOString().split("T")[0];
+            
             if (courseExists) {
                 courseExists.availableDates.push({
+                    courseId:course._id,
                     date: formattedDate,
                     statTime: course.startTime,
                     endTime: course.endTime,
@@ -62,6 +66,7 @@ const CourseCalendar: React.FC<CalendarProps> = ({ courseId, onClose, coursePric
                     type: course.type,
                     availableDates: [
                         {
+                            courseId:course._id,
                             date: formattedDate,
                             statTime: course.startTime,
                             endTime: course.endTime,
@@ -90,7 +95,7 @@ const CourseCalendar: React.FC<CalendarProps> = ({ courseId, onClose, coursePric
         navigate("/stripe", {
             state: {
                 date: dateDetails.date,
-                courseId: course?.courseId,
+                courseId: dateDetails.courseId,
                 courseName: course?.name,
                 startTime: startDateTime,
                 endTime: endDateTime,

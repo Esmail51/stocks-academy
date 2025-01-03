@@ -14,7 +14,7 @@ const LoginMain = ({ show, onClose }: LoginMainProps) => {
   const handleGoogleLogin = async () => {
     console.log('auth', auth);
     const provider = new GoogleAuthProvider();
-    provider.addScope('https://www.googleapis.com/auth/calendar.events');
+    provider.addScope('https://www.googleapis.com/auth/calendar');
     try {
       const result: any = await signInWithPopup(auth, provider);
       Cookies.set('accessToken', result._tokenResponse.oauthAccessToken, { expires: 1 });

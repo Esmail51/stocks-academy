@@ -21,8 +21,8 @@ const api = axios.create({
   );
   
 export const createEventInCalendar = async (payload: any) => {
-    const CLIENT_ID = '701095227141-0hvol8du75cd0qnbkgjsigpusoau6kh8.apps.googleusercontent.com';
-    const API_KEY = 'AIzaSyC-ehL5MIHKNcNHH2J_8kIkvI9tfTn9X_E';
+    const CLIENT_ID = ' 790843306622-nulqf9b7cqfduk3d2rddaj6lcjguj4np.apps.googleusercontent.com';
+    const API_KEY = 'AIzaSyBuRfcoPDzRvVhYuVnn6JjPTyjwExWejdc';
     const SCOPES = 'https://www.googleapis.com/auth/calendar.events';
   
   

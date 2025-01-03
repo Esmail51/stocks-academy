@@ -77,7 +77,7 @@ const PaymentForm: React.FC = () => {
 
     try {
       const payload = {
-        amount: location.state?.price + location.state?.tax,
+        amount: Math.round((location.state?.price + location.state?.tax) * 100),
         currency: 'usd',
       };
       const clientSecret = await createPaymentIntent(payload);
@@ -89,6 +89,8 @@ const PaymentForm: React.FC = () => {
 
       if (stripeError) {
         setCardError(`Payment failed: ${stripeError.message}`);
+      }else if (location.state?.page || location.state.page === 'membership') {
+        return;
       } else if (paymentIntent && paymentIntent.status === 'succeeded') {
         console.log('Payment successful:', paymentIntent);
         console.log('Creating class...', Cookies.get('userDetails'));
@@ -138,16 +140,16 @@ const PaymentForm: React.FC = () => {
               </p>
               <div className="mt-4">
                 <div className="flex justify-between text-sm text-gray-700 mt-2">
-                  <span>Course fee:</span>
-                  <span>${location.state?.price}.00</span>
+                  <span>{location.state?.page ==='membership' ? "Membership" :"Course"} fee:</span>
+                  <span>${location.state?.price?.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-sm text-gray-700">
                   <span>Tax:</span>
-                  <span>${location.state?.tax}.00</span>
+                  <span>${location.state?.tax?.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-sm font-semibold text-gray-800 mt-4">
                   <span>Total payment:</span>
-                  <span>${location.state?.price + location.state?.tax}.00</span>
+                  <span>${(location.state?.price + location.state?.tax)?.toFixed(2)}</span>
                 </div>
               </div>
             </div>

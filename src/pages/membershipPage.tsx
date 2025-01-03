@@ -8,10 +8,32 @@ import img4 from '../../src/assets/images/seminar.png'
 import img5 from '../../src/assets/images/rb_327.webp'
 
 import ScrollToTop from '../components/scrollTop'
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
+
+interface MembershipProps {
+    onLoginOpen: () => void;
+}
 
 
-
-export default function MembershipPage() {
+const MembershipPage =({ onLoginOpen }: MembershipProps) => {
+    const navigate = useNavigate();
+     const handleSubscriptionButton = (planPrice: number) => {
+        const userDetails = Cookies.get('userDetails')
+        if (!userDetails) {
+          onLoginOpen()
+        } else {
+          console.log("Logged in");
+          navigate("/stripe", {
+            state: {
+                page: 'membership',
+                price: planPrice,
+                tax: 1
+            },
+        });
+        }
+        
+      }
     return (
         <section className='   '>
             <ScrollToTop />
@@ -22,13 +44,13 @@ export default function MembershipPage() {
                 <section className=' py-12 bg-gradient-to-r from-googleBlue-500 to-purple-900 '>
                     <div className='  gap-20 lg:mx-24 mx-5'>
 
-                            <div>
-                                <h1 className='text-5xl font-md mt-2 mb-10 text-center text-white' >Choose the Best Community Membership</h1>
-                                {/* <p className='mt-2 mb-10'>This is the Membership Page. You can add any content here.</p> */}
-                              
-                            </div>
+                        <div>
+                            <h1 className='text-5xl font-md mt-2 mb-10 text-center text-white' >Choose the Best Community Membership</h1>
+                            {/* <p className='mt-2 mb-10'>This is the Membership Page. You can add any content here.</p> */}
 
-                            
+                        </div>
+
+
 
                         <div className='flex gap-10 justify-center items-center flex-col lg:flex-row text-white'>
                             {/*2 cards */}
@@ -36,7 +58,7 @@ export default function MembershipPage() {
                             <div className='p-5 w-[70%] xl:w-[50%]  text-start flex flex-col justify-between bg-white text-black  rounded-xl hover:scale-105 transition' >
                                 <div>
                                     <div>
-                                    <svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_2028_10754)"><g filter="url(#filter0_d_2028_10754)"><path d="M31.7693 50.533C13.5577 42.9664 14.4449 31.2772 14.4444 20.5274C21.2066 20.1099 28.812 16.2831 31.7693 14.4219C40.2762 19.5359 45.8418 20.0055 49.3562 20.5274C48.3646 35.9216 46.4338 44.6884 31.7693 50.533Z" fill="url(#paint0_linear_2028_10754)" stroke="url(#paint1_linear_2028_10754)" stroke-width="3.57376"></path></g><path d="M26.2644 35.1266C25.8246 35.1266 25.442 34.8255 25.3387 34.398L24.2775 30.0072C24.0725 29.1592 25.0208 28.5049 25.7408 28.9973L27.9585 30.5139C28.3744 30.7984 28.9399 30.7096 29.2487 30.3114L31.1305 27.8846C31.5118 27.3929 32.2545 27.3929 32.6358 27.8846L34.5176 30.3114C34.8263 30.7096 35.3919 30.7984 35.8078 30.5139L38.0254 28.9973C38.7455 28.5049 39.6937 29.1592 39.4888 30.0072L38.4276 34.398C38.3242 34.8255 37.9416 35.1266 37.5018 35.1266H26.2644ZM38.2515 37.1798C38.2515 37.5904 37.8876 37.8641 37.3417 37.8641H26.4246C25.8787 37.8641 25.5148 37.5904 25.5148 37.1798C25.5148 36.8018 25.8212 36.4954 26.1992 36.4954H37.5671C37.945 36.4954 38.2515 36.8018 38.2515 37.1798Z" fill="white"></path></g><defs><filter id="filter0_d_2028_10754" x="2.64844" y="6.32031" width="58.5977" height="60.1406" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix><feOffset dy="4"></feOffset><feGaussianBlur stdDeviation="5"></feGaussianBlur><feComposite in2="hardAlpha" operator="out"></feComposite><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2028_10754"></feBlend><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2028_10754" result="shape"></feBlend></filter><linearGradient id="paint0_linear_2028_10754" x1="32.0019" y1="51" x2="47.4225" y2="20.6963" gradientUnits="userSpaceOnUse"><stop stop-color="#BD6E1A"></stop><stop offset="1" stop-color="#F5A34C"></stop></linearGradient><linearGradient id="paint1_linear_2028_10754" x1="49.002" y1="17.5" x2="22.502" y2="48" gradientUnits="userSpaceOnUse"><stop stop-color="#BD6E1A"></stop><stop offset="1" stop-color="#F8A54E"></stop></linearGradient><clipPath id="clip0_2028_10754"><rect width="65" height="65" fill="white"></rect></clipPath></defs></svg>
+                                        <svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_2028_10754)"><g filter="url(#filter0_d_2028_10754)"><path d="M31.7693 50.533C13.5577 42.9664 14.4449 31.2772 14.4444 20.5274C21.2066 20.1099 28.812 16.2831 31.7693 14.4219C40.2762 19.5359 45.8418 20.0055 49.3562 20.5274C48.3646 35.9216 46.4338 44.6884 31.7693 50.533Z" fill="url(#paint0_linear_2028_10754)" stroke="url(#paint1_linear_2028_10754)" stroke-width="3.57376"></path></g><path d="M26.2644 35.1266C25.8246 35.1266 25.442 34.8255 25.3387 34.398L24.2775 30.0072C24.0725 29.1592 25.0208 28.5049 25.7408 28.9973L27.9585 30.5139C28.3744 30.7984 28.9399 30.7096 29.2487 30.3114L31.1305 27.8846C31.5118 27.3929 32.2545 27.3929 32.6358 27.8846L34.5176 30.3114C34.8263 30.7096 35.3919 30.7984 35.8078 30.5139L38.0254 28.9973C38.7455 28.5049 39.6937 29.1592 39.4888 30.0072L38.4276 34.398C38.3242 34.8255 37.9416 35.1266 37.5018 35.1266H26.2644ZM38.2515 37.1798C38.2515 37.5904 37.8876 37.8641 37.3417 37.8641H26.4246C25.8787 37.8641 25.5148 37.5904 25.5148 37.1798C25.5148 36.8018 25.8212 36.4954 26.1992 36.4954H37.5671C37.945 36.4954 38.2515 36.8018 38.2515 37.1798Z" fill="white"></path></g><defs><filter id="filter0_d_2028_10754" x="2.64844" y="6.32031" width="58.5977" height="60.1406" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix><feOffset dy="4"></feOffset><feGaussianBlur stdDeviation="5"></feGaussianBlur><feComposite in2="hardAlpha" operator="out"></feComposite><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2028_10754"></feBlend><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2028_10754" result="shape"></feBlend></filter><linearGradient id="paint0_linear_2028_10754" x1="32.0019" y1="51" x2="47.4225" y2="20.6963" gradientUnits="userSpaceOnUse"><stop stop-color="#BD6E1A"></stop><stop offset="1" stop-color="#F5A34C"></stop></linearGradient><linearGradient id="paint1_linear_2028_10754" x1="49.002" y1="17.5" x2="22.502" y2="48" gradientUnits="userSpaceOnUse"><stop stop-color="#BD6E1A"></stop><stop offset="1" stop-color="#F8A54E"></stop></linearGradient><clipPath id="clip0_2028_10754"><rect width="65" height="65" fill="white"></rect></clipPath></defs></svg>
                                     </div>
 
                                     <h1 className='text-xl font-semibold'>Semi Annual Membership</h1>
@@ -44,7 +66,7 @@ export default function MembershipPage() {
                                     {/* <p className='text-2xl font-semibold' > </p> */}
 
                                 </div>
-                                <button className='bg-[#4285F4] text-white hover:bg-white hover:text-black hover:border mt-5'>Subscribe</button>
+                                <button onClick={()=>handleSubscriptionButton(669.99)} className='bg-[#4285F4] text-white hover:bg-white hover:text-black hover:border mt-5'>Subscribe</button>
                             </div>
                             <div className='p-5 w-[70%] xl:w-[50%]  text-start flex flex-col justify-between  bg-white text-black rounded-xl hover:scale-105 transition'>
                                 <div>
@@ -58,13 +80,13 @@ export default function MembershipPage() {
 
 
                                 </div>
-                                <button className='bg-[#4285F4] text-white hover:bg-white hover:text-black hover:border mt-5'>Subscribe</button>
+                                <button onClick={()=>handleSubscriptionButton(1049.00)} className='bg-[#4285F4] text-white hover:bg-white hover:text-black hover:border mt-5'>Subscribe</button>
                             </div>
                             <div className=' w-fit h-fit'>
                                 <img src={img5} alt="" className='w-full' />
                             </div>
 
-                       
+
                         </div>
 
 
@@ -124,3 +146,5 @@ export default function MembershipPage() {
         </section>
     )
 }
+
+export default MembershipPage;

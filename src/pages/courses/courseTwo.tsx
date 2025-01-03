@@ -70,7 +70,7 @@ const CourseTwo = ({ onLoginOpen }: CourseProps) => {
 
             </div>
           </div>
-          {showCalendar ? <CourseCalendar courseId='course2' coursePrice={249} onClose={closeCalendar} /> : null}
+          {showCalendar ? <CourseCalendar courseId='course2' coursePrice={249.00} onClose={closeCalendar} /> : null}
 
         </div>
 
